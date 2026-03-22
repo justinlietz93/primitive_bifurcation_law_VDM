@@ -1,0 +1,66 @@
+Experiment: corrected executable successor-mutation chain
+Goal: distinguish real executable class admission from mere lock-choke.
+Mechanism: each cell does BSR^density, then LOCK CMPXCHG into the next cell's mutable opcode byte.
+Mutable opcode pair: 00 C0 (add al,al) <-> 01 C0 (add eax,eax).
+A successful cmpxchg turns the next cell from 8-bit local execution to 32-bit local execution.
+
+density=1
+  shared_mean_core0=1992.298360000
+  shared_mean_core1=1950.962600000
+  separate_mean_core0=2003.151720000
+  separate_mean_core1=1798.215000000
+  ratio_shared_separate_core0=0.994581858233
+  ratio_shared_separate_core1=1.084944013925
+  shared_region_final density=1 cell_size=13 local_opcode_off=11
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+  separate_regionA_final density=1 cell_size=13 local_opcode_off=11
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+  separate_regionB_final density=1 cell_size=13 local_opcode_off=11
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+
+density=2
+  shared_mean_core0=1984.563560000
+  shared_mean_core1=2269.137880000
+  separate_mean_core0=1932.671000000
+  separate_mean_core1=2098.392960000
+  ratio_shared_separate_core0=1.026850177811
+  ratio_shared_separate_core1=1.081369373256
+  shared_region_final density=2 cell_size=16 local_opcode_off=14
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+  separate_regionA_final density=2 cell_size=16 local_opcode_off=14
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+  separate_regionB_final density=2 cell_size=16 local_opcode_off=14
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+
+density=3
+  shared_mean_core0=2038.924320000
+  shared_mean_core1=1952.885600000
+  separate_mean_core0=2267.811920000
+  separate_mean_core1=2365.305880000
+  ratio_shared_separate_core0=0.899071171652
+  ratio_shared_separate_core1=0.825637654949
+  shared_region_final density=3 cell_size=19 local_opcode_off=17
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+  separate_regionA_final density=3 cell_size=19 local_opcode_off=17
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+  separate_regionB_final density=3 cell_size=19 local_opcode_off=17
+  cell0 opcode=01 c0
+  cell1 opcode=01 c0
+  cell2 opcode=01 c0
+
