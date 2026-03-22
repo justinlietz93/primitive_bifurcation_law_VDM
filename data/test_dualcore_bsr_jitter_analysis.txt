@@ -1,0 +1,115 @@
+Dual-core BSR jitter summary
+{
+  "environment": "x86_64 under Microsoft hypervisor",
+  "samples_per_core": 200000,
+  "core0": {
+    "mean": 31.80212,
+    "median": 32.0,
+    "std": 41.82637353997595,
+    "min": 28,
+    "max": 16370,
+    "p95": 34.0,
+    "p99": 38.0,
+    "top_cycle_counts": [
+      [
+        32,
+        121777
+      ],
+      [
+        30,
+        65211
+      ],
+      [
+        34,
+        8180
+      ],
+      [
+        36,
+        1660
+      ],
+      [
+        38,
+        1068
+      ],
+      [
+        28,
+        987
+      ],
+      [
+        40,
+        648
+      ],
+      [
+        42,
+        168
+      ],
+      [
+        44,
+        63
+      ],
+      [
+        92,
+        47
+      ]
+    ]
+  },
+  "core1": {
+    "mean": 31.76899,
+    "median": 32.0,
+    "std": 65.411568811487,
+    "min": 28,
+    "max": 28276,
+    "p95": 34.0,
+    "p99": 36.0,
+    "top_cycle_counts": [
+      [
+        32,
+        121430
+      ],
+      [
+        30,
+        65602
+      ],
+      [
+        34,
+        8552
+      ],
+      [
+        36,
+        1786
+      ],
+      [
+        28,
+        1008
+      ],
+      [
+        38,
+        978
+      ],
+      [
+        40,
+        422
+      ],
+      [
+        42,
+        89
+      ],
+      [
+        44,
+        40
+      ],
+      [
+        46,
+        21
+      ]
+    ]
+  },
+  "raw_pearson_correlation": -4.73413607166929e-06,
+  "winsorized_pearson_correlation": -0.014564078242291572,
+  "cf13_ratio_probe": {
+    "target_ratio": 1.37,
+    "observed_top_cycle_ratio_core0": 1.0666666666666667,
+    "observed_top_cycle_ratio_core1": 1.0666666666666667,
+    "note": "Most common delta bins were 32 and 30 cycles on both cores; no stable ~1.37 timing ratio appeared in this run."
+  }
+}
