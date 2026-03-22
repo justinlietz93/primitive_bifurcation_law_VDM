@@ -1,0 +1,11 @@
+LOCK CMPXCHG choke test
+shared target final=1 separate finals=1,1
+shared   mean0=301.805 min0=38 max0=40534 mean1=320.015 min1=38 max1=34144
+separate mean0=41.779 min0=38 max0=22032 mean1=41.009 min1=38 max1=538
+shared-minus-separate delta mean core0=260.026 core1=279.006
+shared core0 top bins: 42(36995) 40(35959) 454(6585) 456(6296) 452(5466) 44(5206) 486(5203) 430(5075)
+shared core1 top bins: 42(37660) 40(34589) 498(9441) 496(8598) 500(7609) 502(6944) 494(6389) 486(6385)
+separate core0 top bins: 40(99763) 42(90483) 44(4671) 46(1409) 38(1209) 48(596) 50(471) 54(376)
+separate core1 top bins: 40(103180) 42(92312) 44(3295) 38(1151) 48(18) 46(13) 50(8) 52(2)
+shared dominant spectrum idx core0=0.000427246 psd=154292474279.147 core1=0.000183105 psd=864610135551.927
+separate dominant spectrum idx core0=0.000701904 psd=170514675.007 core1=0.001251221 psd=27446810.957
