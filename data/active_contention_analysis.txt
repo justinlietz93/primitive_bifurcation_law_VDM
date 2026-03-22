@@ -1,0 +1,105 @@
+Active contention BSR/SETZ analysis
+Shared target versus separate targets.
+
+[shared_core0]
+mean=35.659 median=34.0 min=28 max=14580
+Top histogram bins:
+  delta=34 count=22558
+  delta=32 count=8935
+  delta=36 count=7873
+  delta=30 count=3326
+  delta=40 count=2611
+  delta=38 count=1840
+  delta=42 count=1653
+  delta=44 count=343
+  delta=46 count=204
+  delta=48 count=85
+Top PSD bins:
+  bin=11035 freq=0.220700 period=4.531 power=931429587.918
+  bin=23 freq=0.000460 period=2173.913 power=922638076.932
+  bin=15740 freq=0.314800 period=3.177 power=916922671.442
+  bin=14591 freq=0.291820 period=3.427 power=883437989.437
+  bin=3510 freq=0.070200 period=14.245 power=870914493.913
+  bin=17623 freq=0.352460 period=2.837 power=865309575.594
+  bin=14316 freq=0.286320 period=3.493 power=865191164.691
+  bin=24394 freq=0.487880 period=2.050 power=864598495.800
+
+[shared_core1]
+mean=35.180 median=34.0 min=28 max=3004
+Top histogram bins:
+  delta=34 count=23182
+  delta=32 count=9135
+  delta=36 count=7339
+  delta=30 count=3364
+  delta=40 count=2410
+  delta=38 count=1784
+  delta=42 count=1635
+  delta=44 count=336
+  delta=46 count=175
+  delta=48 count=89
+Top PSD bins:
+  bin=21 freq=0.000420 period=2380.952 power=200313791.072
+  bin=3 freq=0.000060 period=16666.667 power=175883424.701
+  bin=78 freq=0.001560 period=641.026 power=143285003.706
+  bin=72 freq=0.001440 period=694.444 power=136582048.466
+  bin=15 freq=0.000300 period=3333.333 power=130835320.827
+  bin=6520 freq=0.130400 period=7.669 power=116354360.258
+  bin=15188 freq=0.303760 period=3.292 power=112700697.363
+  bin=24434 freq=0.488680 period=2.046 power=108153119.675
+
+[separate_core0]
+mean=35.347 median=34.0 min=28 max=18184
+Top histogram bins:
+  delta=34 count=22436
+  delta=32 count=9200
+  delta=36 count=7524
+  delta=30 count=3817
+  delta=40 count=2506
+  delta=42 count=1689
+  delta=38 count=1689
+  delta=44 count=348
+  delta=46 count=206
+  delta=48 count=109
+Top PSD bins:
+  bin=2 freq=0.000040 period=25000.000 power=1119781589.431
+  bin=4 freq=0.000080 period=12500.000 power=770267370.609
+  bin=5 freq=0.000100 period=10000.000 power=709997858.758
+  bin=257 freq=0.005140 period=194.553 power=663720567.370
+  bin=56 freq=0.001120 period=892.857 power=661565879.161
+  bin=344 freq=0.006880 period=145.349 power=633789868.874
+  bin=1192 freq=0.023840 period=41.946 power=632561595.004
+  bin=3 freq=0.000060 period=16666.667 power=629882289.762
+
+[separate_core1]
+mean=34.882 median=34.0 min=28 max=2498
+Top histogram bins:
+  delta=34 count=22530
+  delta=32 count=9379
+  delta=36 count=7321
+  delta=30 count=3780
+  delta=40 count=2452
+  delta=42 count=1725
+  delta=38 count=1683
+  delta=44 count=375
+  delta=46 count=180
+  delta=48 count=103
+Top PSD bins:
+  bin=3 freq=0.000060 period=16666.667 power=168729699.940
+  bin=2 freq=0.000040 period=25000.000 power=166246588.768
+  bin=9 freq=0.000180 period=5555.556 power=124940735.841
+  bin=5 freq=0.000100 period=10000.000 power=109295790.141
+  bin=14 freq=0.000280 period=3571.429 power=71341814.197
+  bin=11 freq=0.000220 period=4545.455 power=67150115.947
+  bin=31 freq=0.000620 period=1612.903 power=63018190.124
+  bin=15 freq=0.000300 period=3333.333 power=60873899.125
+
+Tail coincidence:
+shared_thresh_40: core0=5416 core1=5145 simultaneous=1764
+separate_thresh_40: core0=5288 core1=5240 simultaneous=1938
+shared_thresh_44: core0=1152 core1=1100 simultaneous=80
+separate_thresh_44: core0=1093 core1=1063 simultaneous=109
+shared_thresh_48: core0=605 core1=589 simultaneous=15
+separate_thresh_48: core0=539 core1=508 simultaneous=32
+
+Shared-target contention increased mean delta by 0.311 cycles on core0 and 0.297 cycles on core1 relative to separate-target baseline.
+No single PSD peak was common and dominant across both shared-target cores in the way a stable oscillation signature would require in this run.

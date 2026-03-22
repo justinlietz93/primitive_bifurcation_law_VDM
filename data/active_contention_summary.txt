@@ -1,0 +1,2 @@
+shared mean0=35.659 min0=28 max0=14580 mean1=35.180 min1=28 max1=3004
+separate mean0=35.347 min0=28 max0=18184 mean1=34.882 min1=28 max1=2498
