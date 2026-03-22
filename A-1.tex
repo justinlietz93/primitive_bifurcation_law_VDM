@@ -1,0 +1,1911 @@
+\documentclass[11pt]{article}
+\usepackage{arxiv}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+% ---- arXiv preprint look ----
+\usepackage{arxiv}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ---- math, figures, tables ----
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\sisetup{detect-all, output-exponent-marker = \mathrm{e}, group-minimum-digits = 4}
+\usepackage{microtype}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{placeins} % keep floats before references
+
+% ---- refs & links (template uses natbib) ----
+\usepackage{natbib}
+% hyperref is sometimes loaded implicitly (e.g., by doi); avoid option clashes:
+\PassOptionsToPackage{hidelinks}{hyperref}
+\usepackage{hyperref}
+\usepackage{doi}
+\usepackage{xspace}
+\usepackage{enumitem}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+% Prevent widows/orphans
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% ---- OPTIONAL: line numbers (comment out if not needed) ----
+% \usepackage[modulo]{lineno}
+
+% ---- Theorem-like environments ----
+\theoremstyle{definition}
+\theoremstyle{plain}
+\theoremstyle{remark}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{axiom}[definition]{Axiom}
+
+% ---- Minimal gate + claim helpers ----
+\newenvironment{vdmgate}[2]{%
+  \paragraph{Gate: #1}\emph{Threshold: #2.}%
+  \par\noindent}{\medskip}
+
+\newenvironment{vdmclaim}[2]{%
+  \paragraph{Claim: #1}\emph{Decisive metric: #2.}%
+  \par\noindent}{\medskip}
+
+\newcommand{\provenance}[3]{\textbf{Commit:} \texttt{#1}\quad
+  \textbf{Seed(s):} \texttt{#2}\quad
+  \textbf{Artifacts:} \texttt{#3}}
+
+% ---- ORCID icon macro (optional) ----
+\newcommand{\orcidicon}[1]{%
+  \href{https://orcid.org/#1}{\includegraphics[height=1.6ex]{orcid.pdf}}%
+}
+
+% ---- Convenience macros ----
+\newcommand{\VDM}{\textsc{VDM}\xspace}
+\newcommand{\CF}{\textsc{CF}\xspace}
+\newcommand{\CFN}{\textsc{CFN}\xspace}
+\newcommand{\Inv}{\mathrm{Inv}}
+\newcommand{\Sat}{\mathrm{Sat}}
+\newcommand{\Bear}{\mathrm{Bear}}
+\newcommand{\Dis}{\mathrm{Dis}}
+\newcommand{\Debt}{\mathrm{Debt}}
+\newcommand{\Diff}{\mathrm{Diff}}
+\newcommand{\Deg}{\mathrm{Deg}}
+\newcommand{\Bur}{\mathrm{Bur}}
+\newcommand{\ArtCap}{\mathrm{Cap}}
+\newcommand{\Aclass}{\mathcal{A}}
+\newcommand{\Dom}{\mathcal{D}}
+\newcommand{\EffInv}{\mathrm{EffInv}}
+\newcommand{\EffAx}{\mathrm{EffAx}}
+\newcommand{\EffPkg}{\mathcal{E}}
+\newcommand{\BifOp}{\mathcal{B}}
+
+\renewcommand{\headeright}{Void Dynamics Model}
+\renewcommand{\undertitle}{Void Dynamics Model}
+\renewcommand{\shorttitle}{Primitive Bifurcation Law}
+
+\title{Universality of Primitive Bifurcation and Orthogonal Articulation}
+\author{Justin K.\ Lietz~\orcidicon{0009-0008-9028-1366}\\
+\href{https://www.neuroca.ai}{Neuroca, Inc.}\\
+\texttt{\href{justin@neuroca.ai}{justin@neuroca.ai}}\\
+DOI: \href{https://doi.org/10.5281/zenodo.19158339}{10.5281/zenodo.19158339}}
+
+\providecommand{\keywords}[1]{\par\noindent\textbf{Keywords: }#1\par}
+\setlength{\fboxsep}{8pt}
+\newcommand{\LawBox}[1]{%
+  \begin{center}
+  \fbox{\parbox{0.93\linewidth}{#1}}
+  \end{center}%
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper states the single primitive law of the Void Dynamics Model. VDM does not begin from many independent primitive axioms, many independent primitive invariants, or a list of unrelated foundational laws. It begins from one primitive invariant: unresolved two-pole opposition borne internally by one admissible origin-condition. Because that invariant cannot discharge into either isolated pole, it must continue articulating itself wherever lawful articulation remains possible. The universal trigger is therefore not arbitrary growth but saturation under non-discharge: when the currently admitted articulation class has exhausted its lawful invariant-bearing capacity while unresolved burden remains, same-domain continuation fails, void debt begins at the saturation limit, and orthogonal re-articulation into a new irreducible domain is forced.
+
+The paper proves four things. First, there is exactly one primitive invariant and one primitive law in VDM. Second, same-domain saturation is not a stopping condition but the exhaustion of all currently available invariant-bearing degrees of freedom and axes while unresolved burden remains. Third, void debt is the constitutional pressure variable that begins at that exact saturation limit and marks the unresolved continuation pressure that cannot lawfully remain within the exhausted class. Fourth, every later axiom and every later invariant is effective rather than primitive. New domains inherit the prior invariant burden and admit at least one new domain-proper effective expression of the primitive invariant, together with only the minimum additional stabilizing law(s) required to keep the invariant borne and non-discharged there. In this sense, symmetry, conservation, irreversibility, chirality, and later structural laws are not independent beginnings. They are inevitable forced consequences of avoiding discharge.
+\end{abstract}
+
+\keywords{VDM; primitive bifurcation; orthogonal articulation; non-discharge; void debt; articulation capacity; effective invariants; effective axioms}
+
+\tableofcontents
+\newpage
+
+\section{Executive Summary}
+
+This is a self-contained foundational law paper. Its burden is to state the one primitive law by which every later domain, dimension, invariant, and dynamic becomes necessary. The first explicit staged derivation of this law through the 0D$\to$1D$\to$2D route is carried by CF000; the present paper states the primitive law itself and the universal continuation mechanism it imposes.
+
+\paragraph{Effective origin.}
+This paper does not claim access to an absolute metaphysical beginning. It states the earliest admissible \emph{effective origin} available within branch-resolved access: one primitive condition bearing unresolved two-pole opposition. The claim is constitutional rather than cosmological. Any deeper source, if it exists, would still have to present itself to a realized branch through this same unresolved primitive opposition in order to remain admissible.
+
+The center of the paper is simple. One primitive condition bears two mutually irreconcilable terminal poles in unresolved internal opposition. Every admitted articulation must continue to bear that unresolved opposition. While a presently admitted articulation class still has lawful hosting capacity for genuinely new invariant-bearing articulation, same-class continuation remains possible. But once all articulation within the available degrees of freedom and available axes of that class is exhausted while unresolved burden remains, the class can no longer lawfully host the invariant in full. That unresolved continuation pressure is \emph{void debt}. If articulation were to stop there, the invariant would collapse operationally into discharge. Discharge is forbidden. Therefore a new irreducible articulation class must be admitted.
+
+The paper's claim is therefore constitutional rather than local: any later invariant or dynamic is an inevitable forced consequence of avoiding discharge. There is only one primitive invariant and one primitive law. All later axioms are effective axioms; all later invariants are effective invariants. They arise when orthogonal re-articulation admits a new domain and the primitive invariant re-expresses itself there in whatever minimum additional form is required to remain borne and non-discharged.
+
+\paragraph{Scope.} This paper explains the Primitive Bifurcation Law itself and the universal mechanism by which unresolved opposition continues through burden, saturation, boundary hosting, and forced orthogonal re-articulation. It does not attempt to derive the later carrier, metric, matter, gravity, or cosmological branches in full detail here.
+
+\subsection*{Three Formal Concepts}
+
+This paper introduces three central formal concepts at the constitutional
+level:
+
+\begin{itemize}[leftmargin=2.2em]
+    \item \textbf{Void debt:} the unresolved continuation pressure of the
+    primitive invariant when same-domain hosting capacity is exhausted.
+
+    \item \textbf{Invariant burden density:} the later local realized
+    distribution-form of that same burden once geometric localization becomes
+    admissible.
+
+    \item \textbf{Saturation geometry:} the structural trace left when the
+    invariant exhausts the current articulation class and is forced into
+    boundary hosting and orthogonal re-articulation.
+\end{itemize}
+
+\section{Primitive and Effective Status}
+
+\begin{definition}[Primitive invariant]
+The primitive invariant, denoted $\Inv$, is the unresolved internal opposition between the two terminal poles of a realized branch. It is the unique admissible primitive source of articulation.
+\end{definition}
+
+\begin{definition}[Primitive law]
+The primitive law is the law that governs the continued articulation of $\Inv$ under non-discharge. It states that when lawful articulation within the currently admitted articulation class saturates while $\Inv$ remains unresolved, orthogonal re-articulation into a new irreducible class is forced.
+\end{definition}
+
+\begin{definition}[Effective invariant]
+An effective invariant is a domain-proper expression of the primitive invariant that first appears when a new irreducible articulation domain is admitted. Effective invariant expressions are cumulative: they inherit the prior invariant burden and add at least one new proper expression, together with only the minimum additional stabilization law(s) required to keep the primitive invariant borne there.
+\end{definition}
+
+\begin{definition}[Effective axiom]
+An effective axiom is a stabilized domain-specific law obtained when the primitive law is expressed within an already admitted articulation regime. Effective axioms are derivative rather than primitive.
+\end{definition}
+
+\begin{remark}
+The phrase ``all later axioms are effective axioms'' means that later lawlike closures may be formulated axiomatically for work inside a domain, but their authority is derivative rather than primitive. They are admitted only as expressions of the one primitive law.
+\end{remark}
+
+\section{Why There Is Only One Primitive Law}
+
+\begin{definition}[Terminal poles]
+The two isolated terminal poles are absolute nullity and absolute undifferentiated totality. A realized branch cannot terminate primitively in either one.
+\end{definition}
+
+\begin{definition}[Discharge]
+\label{def:discharge}
+$\Dis(\Inv)$ is terminal settlement of the invariant into either isolated pole, or any operationally equivalent loss of borne unresolved opposition without continued articulation.
+\end{definition}
+
+\begin{proposition}[Uniqueness of the primitive source]
+No primitive source besides the unresolved two-pole invariant is admissible.
+\end{proposition}
+
+\begin{proof}
+Either the primitive source is one isolated pole, or it is a third primitive, or it is the unresolved internal opposition of the two poles. An isolated pole is sterile. A third primitive violates terminal exhaustion and is excluded by the same exhaustion logic that yields the two poles. More explicitly: if a third primitive were admitted, then the two terminal poles would no longer be exhaustive as terminal primitive options, and the branch would not be forced back to the unresolved opposition between them. That would break the very terminal-exhaustion structure from which the two-pole opposition is derived. Therefore only the unresolved internal opposition remains. 
+\end{proof}
+
+\begin{proposition}[Why no second primitive law is needed]
+Any later law that governs articulation, conservation, asymmetry, orientation, or stabilization must either contradict the primitive law, be independent of it, or be a domain-specific expression of it. The first two options are inadmissible. Therefore every later law is effective.
+\end{proposition}
+
+\begin{proof}
+If a later law contradicted the primitive law, the canon would not be constitutionally coherent. If it were independent, a second primitive source would exist. But the primitive source is unique by the preceding proposition. Therefore every later law must be a domain-specific expression of the primitive law. 
+\end{proof}
+
+\section{Internal Mechanism: Burden, Capacity, Void Debt, and Boundary Hosting}
+
+\begin{definition}[Invariant burden]
+The invariant burden of an admitted articulation class $\Aclass_n$, denoted $\Bur(\Inv,\Aclass_n)$, is the unresolved invariant load currently borne within that class.
+\end{definition}
+
+\begin{definition}[Articulation capacity]
+The articulation capacity of an admitted class $\Aclass_n$, denoted $\ArtCap(\Aclass_n)$, is the lawful invariant-bearing capacity available within the currently admitted degrees of freedom and axes of that class.
+\end{definition}
+
+\begin{definition}[Void debt]
+Void debt is the unresolved continuation pressure of the primitive invariant when all currently available same-domain invariant-bearing degrees of freedom and axes are exhausted while the invariant remains unresolved. Equivalently, it names the unresolved burden that remains once the lawful same-domain hosting capacity of the class has been exhausted by articulation.
+\end{definition}
+
+\begin{remark}
+Void debt is the primary constitutional term. In later geometric branches, the same underlying mechanism can be realized locally as invariant burden density. The two are not exact synonyms at the primitive law level. Void debt names the unresolved continuation pressure that begins exactly when lawful same-domain hosting capacity is exhausted while the invariant remains unresolved; invariant burden density is a later local realized distribution-form of that same burden once a carrier/domain admits geometric localization.
+\end{remark}
+
+\begin{definition}[Same-domain saturation]
+\label{def:saturation}
+Same-domain saturation occurs when unresolved invariant burden has exhausted the lawful same-domain articulation capacity of the currently admitted degrees of freedom and axes, so no genuinely new invariant-bearing articulation remains available within that class.
+\end{definition}
+
+\begin{definition}[Orthogonal re-articulation]
+A new class $\Aclass_{n+1}$ is orthogonal to $\Aclass_n$, written $\Aclass_{n+1}\perp\Aclass_n$, iff it is irreducible to the exhausted articulation class and admits a new kind of invariant-bearing articulation not lawfully available within $\Aclass_n$.
+\end{definition}
+
+\begin{proposition}[Why same-class continuation fails]
+If $\Bear(\Inv,\Aclass_n)$ and $\Sat(\Aclass_n)$ hold, then same-class continuation cannot host the invariant without either redundancy, collapse, or discharge. In that situation void debt is already present at the saturation limit.
+\end{proposition}
+
+\begin{proof}
+By saturation, the class has exhausted its lawful articulation capacity while unresolved burden remains borne. Therefore the unresolved burden cannot be fully hosted inside the same class. Any attempt to continue without admitting new irreducible structure can only repeat exhausted articulation, collapse into redundancy, or stop borne articulation altogether. In each case the unresolved burden is not lawfully hosted. That unresolved continuation pressure is void debt, and it begins at the saturation limit itself rather than only after some later strict overshoot. 
+\end{proof}
+
+\begin{proposition}[Boundary Hosting Principle]
+When unresolved invariant burden exhausts the lawful bulk hosting capacity of an admitted articulation class, the remaining burden concentrates at the boundary of that class as the minimal same-domain locus at which the invariant can still be borne without discharge. Orthogonal re-articulation proceeds from this saturated boundary condition.
+\end{proposition}
+
+\begin{proof}
+Once bulk hosting capacity is exhausted, the invariant cannot continue to distribute its unresolved burden throughout the class in the same way. Yet discharge is forbidden, so the remaining burden must still be borne somewhere within the residual same-domain possibility space. The boundary is the limiting hosting locus of the exhausted class: it is the minimal residual locus at which burden can remain borne without immediate termination. Therefore saturated burden concentrates there, and orthogonal re-articulation proceeds from that boundary condition rather than from an unconstrained bulk continuation. 
+\end{proof}
+
+\begin{remark}
+Boundaries are introduced here constitutionally, not yet as fully developed geometric objects. The present paper does not import codimension-1 PDE interface machinery, A8 hierarchical-interface formalism, or CF12 horizon equations. It states only the law-level hosting principle. Boundary energy/information concentration is a downstream signature of concentrated void debt, not a separate primitive law.
+\end{remark}
+
+\begin{proposition}[Minimum Protection Principle]
+Newly admitted structure is licensed only insofar as it is the least additional invariant-bearing machinery required to host accumulated unresolved burden without discharge.
+\end{proposition}
+
+\begin{proof}
+If more structure than necessary were primitively licensed, the branch would admit gratuitous excess not justified by the burden it must host. If less structure than necessary were licensed, the unresolved burden would remain unhosted and discharge would follow. Therefore admissibility selects the minimum additional protection required to preserve borne non-discharge. 
+\end{proof}
+
+\section{The Universal Trigger Law}
+
+\begin{theorem}[Primitive bifurcation law --- constitutional form]
+\label{thm:primitive-bifurcation}
+Whenever the invariant remains borne in an admitted articulation class, same-domain saturation has occurred, and discharge is forbidden, a new irreducible articulation class is forced:
+\begin{equation}
+\label{eq:trigger-law}
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\Sat(\Aclass_n)
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Assume $\Bear(\Inv,\Aclass_n)$, $\Sat(\Aclass_n)$, and $\neg\Dis(\Inv)$. By Definition~\ref{def:saturation}, no genuinely new lawful articulation remains available within the current class. Because the invariant is still borne while same-class hosting freedom is exhausted, unresolved continuation pressure is already present there. By the definition of void debt, this means that void debt is active at the saturation limit itself. By non-discharge, cessation is forbidden. Therefore the invariant must continue articulating itself outside the exhausted class. If the new class were reducible to the old one, saturation would not have been real, because the allegedly new articulation would still lie within the same class. Hence a new irreducible class is forced.
+\end{proof}
+
+\begin{remark}
+The trigger is exact. Orthogonal re-articulation does not occur because of local inconvenience, temporary obstruction, or incomplete exhaustion. It occurs exactly when unresolved burden remains active, same-class hosting capacity is exhausted, void debt begins at that saturation limit, and non-discharge forbids cessation.
+\end{remark}
+
+\section{Equivalent Display Forms of the Primitive Law}
+
+There is only \emph{one} primitive law. The formulas below are not different laws. They are exact display renderings of the same constitutional trigger, each written so that a different aspect of the same primitive mechanism is made explicit.
+
+\begin{definition}[Exact capacity-collapse form of saturation]
+\label{def:cap-zero}
+The statement
+\begin{equation}
+\label{eq:cap-zero}
+\ArtCap(\Aclass_n)=0
+\end{equation}
+means exactly that the currently admitted class has exhausted all genuinely new lawful invariant-bearing articulation available within its own degrees of freedom and axes. In other words, it is the articulation-capacity rendering of same-domain saturation.
+\end{definition}
+
+\begin{proposition}[Saturation form and capacity-collapse form are identical]
+\label{prop:sat-cap-equivalence}
+For any admitted articulation class $\Aclass_n$ in which the invariant remains borne, the statements
+\begin{equation}
+\label{eq:sat-cap-left}
+\Sat(\Aclass_n)
+\end{equation}
+and
+\begin{equation}
+\label{eq:sat-cap-right}
+\ArtCap(\Aclass_n)=0
+\end{equation}
+are equivalent.
+\end{proposition}
+
+\begin{proof}
+By Definition~\ref{def:saturation}, same-domain saturation means that unresolved invariant burden has exhausted the lawful same-domain articulation capacity of the currently admitted degrees of freedom and axes, so that no genuinely new invariant-bearing articulation remains available within that class. By Equation~\ref{eq:cap-zero}, this is exactly what $\ArtCap(\Aclass_n)=0$ states. Therefore, under borne unresolved burden, the two statements are not merely correlated; they are the same condition written in different vocabularies.\end{proof}
+
+\begin{corollary}[Primitive bifurcation law --- capacity-collapse form]
+\label{cor:capacity-form}
+Using Proposition~\ref{prop:sat-cap-equivalence}, the primitive bifurcation law may be written as:
+\begin{equation}
+\label{eq:capacity-form}
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\bigl(\ArtCap(\Aclass_n)=0\bigr)
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\end{equation}
+\end{corollary}
+
+\begin{remark}[What the capacity-collapse form reveals]
+The constitutional form foregrounds the theorem logic: borne invariant, saturation, forbidden discharge, therefore forced orthogonal continuation. The capacity-collapse form foregrounds the internal pressure mechanism: the currently admitted class has no lawful articulation capacity left, so continued bearing cannot remain in-class.
+\end{remark}
+
+\begin{definition}[Exact activation condition for void debt]
+\label{def:debt-activation}
+Void debt is active exactly when the invariant remains borne, same-class articulation capacity has been exhausted, and discharge is forbidden. Equivalently,
+\begin{equation}
+\label{eq:debt-activation}
+\Debt(\Inv,\Aclass_n)=+\infty
+\end{equation}
+means that unresolved continuation pressure is constitutionally present at the saturation limit of $\Aclass_n$.
+\end{definition}
+
+\begin{proposition}[Void-debt form is equivalent to the constitutional form]
+\label{prop:debt-equivalence}
+For any admitted articulation class $\Aclass_n$, the conjunction
+\begin{equation}
+\label{eq:debt-equivalence-left}
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\bigl(\ArtCap(\Aclass_n)=0\bigr)
+\;\wedge\;
+\neg\Dis(\Inv)
+\end{equation}
+is equivalent to the statement
+\begin{equation}
+\label{eq:debt-equivalence-right}
+\Debt(\Inv,\Aclass_n)=+\infty
+\;\wedge\;
+\neg\Dis(\Inv).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By definition, void debt is not a second force or an additional law. It is the name for the unresolved continuation pressure that begins exactly when the invariant remains borne while lawful same-domain articulation capacity is exhausted. That is precisely the conjunction appearing in Equation~\ref{eq:debt-equivalence-left}. Since non-discharge remains mandatory there, the unresolved continuation pressure cannot lawfully relax inside the exhausted class. Writing this as $\Debt(\Inv,\Aclass_n)=+\infty$ simply makes explicit that the continuation pressure has no finite in-class resolution. Therefore Equation~\ref{eq:debt-equivalence-left} and Equation~\ref{eq:debt-equivalence-right} are the same constitutional state written in two different forms.\end{proof}
+
+\begin{corollary}[Primitive bifurcation law --- void-debt form]
+\label{cor:debt-form}
+Using Proposition~\ref{prop:debt-equivalence}, the primitive bifurcation law may also be written as:
+\begin{equation}
+\label{eq:debt-form}
+\Debt(\Inv,\Aclass_n)=+\infty
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\end{equation}
+\end{corollary}
+
+\begin{remark}[What the void-debt form reveals]
+The void-debt form reveals the law in its pressure language. It makes explicit that orthogonal re-articulation is not arbitrary branching. It is what the invariant is forced to do when unresolved continuation pressure has no lawful finite in-class resolution.
+\end{remark}
+
+\begin{definition}[Executable operator rendering]
+\label{def:operator-rendering}
+The primitive bifurcation operator is the executable rendering of the same constitutional law\footnote{This is the admissibility kernel executed by every realized branch.}:
+\begin{equation}
+\label{eq:operator-form}
+\BifOp_{\Inv}(\Aclass_n)=
+\begin{cases}
+\Aclass_n,
+& \ArtCap(\Aclass_n)>0,\\[8pt]
+\Aclass_n \oplus \Aclass_{n+1}^{\perp},
+& \ArtCap(\Aclass_n)=0
+\;\wedge\;
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\neg\Dis(\Inv).
+\end{cases}
+\end{equation}
+This is not a second law. It is the same law written as an executable admissibility operator.
+\end{definition}
+
+\begin{proposition}[Operator form is equivalent to the constitutional form]
+\label{prop:operator-equivalence}
+Equation~\ref{eq:operator-form} is equivalent to Equation~\ref{eq:trigger-law}.
+\end{proposition}
+
+\begin{proof}
+The first branch of Equation~\ref{eq:operator-form} states that when lawful same-class articulation capacity remains available, no new irreducible structure is admitted. This is exactly the negation of saturation. The second branch states that when same-class capacity is exhausted while the invariant remains borne and discharge is forbidden, the currently admitted class is retained and a new orthogonal class is admitted. That is precisely the content of Equation~\ref{eq:trigger-law}. The operator form therefore introduces no new law and no new burden. It is simply the constitutional theorem rewritten in executable piecewise form.\end{proof}
+
+\begin{remark}[What the operator form reveals]
+The operator form reveals the law as a kernel-level admissibility rule. It makes explicit that the primitive law is not “branch every step.” Rather, the admitted class persists while lawful same-class continuation remains available; orthogonal extension occurs only when that possibility has been constitutionally exhausted.
+\end{remark}
+
+\subsection*{Law at a Glance: boxed display forms}
+
+For immediate reference, the same primitive law may be viewed through four exact display renderings. These are collected here in boxed form so the reader can see, on one page, the constitutional theorem, the articulation-capacity collapse form, the void-debt pressure form, and the executable operator form side by side. They are not four laws. They are four exact renderings of one law, each foregrounding a different aspect of the same primitive mechanism.
+
+\LawBox{\textbf{Constitutional / theorem form}
+\[
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\Sat(\Aclass_n)
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\]}
+
+\LawBox{\textbf{Capacity-collapse form}
+\[
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\bigl(\ArtCap(\Aclass_n)=0\bigr)
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\]}
+
+\LawBox{\textbf{Void-debt / pressure form}
+\[
+\Debt(\Inv,\Aclass_n)=+\infty
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\]}
+
+\LawBox{\textbf{Executable / operator form}
+\[
+\BifOp_{\Inv}(\Aclass_n)=
+\begin{cases}
+\Aclass_n,
+& \ArtCap(\Aclass_n)>0,\\[8pt]
+\Aclass_n \oplus \Aclass_{n+1}^{\perp},
+& \ArtCap(\Aclass_n)=0
+\;\wedge\;
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\neg\Dis(\Inv).
+\end{cases}
+\]}
+
+\section{Constitutional Resolution Modes}
+
+The Primitive Bifurcation Law admits three recurring constitutional resolution modes. These are not independent primitive laws. They are recurring forms by which the same primitive law preserves non-discharge under different articulation failures.
+
+\begin{description}[leftmargin=2.5em,style=nextline]
+    \item[Type I --- Completion.]
+    When lawful articulation is internally incomplete because a required closure element is missing, continuation is forced by completion.
+
+    \item[Type II --- Orthogonal re-articulation.]
+    When same-domain articulation saturates while unresolved burden remains, a new irreducible articulation class is forced.
+
+    \item[Type III --- Metric / dissipative handling.]
+    When unresolved burden approaches operational loss under finite representation, truncation, or limiting hosting conditions, a compensating metric or dissipative handling channel is forced in order to preserve non-discharge.
+\end{description}
+
+\begin{remark}
+These constitutional resolution modes are not separate axioms and not separate sources of law. They are recurring operational forms of the one primitive law under different limiting conditions of articulation.
+\end{remark}
+
+\section{Effective Invariant and Effective Axiom Generation}
+
+\begin{theorem}[General law of effective invariant expression]
+\label{thm:effective-invariants}
+Each orthogonal re-articulation into a newly admitted irreducible domain generates at least one new domain-proper effective expression of the primitive invariant, together with only whatever additional effective stabilization law(s) are minimally necessary to keep the invariant borne and non-discharged under the articulation conditions proper to that domain.
+\end{theorem}
+
+\begin{proof}
+A newly admitted domain must bear the same primitive invariant, otherwise it would not continue the same branch. Because it is irreducible to the exhausted class, prior invariant expressions alone are insufficient to host the articulation conditions of the new domain. Therefore at least one new domain-proper effective expression is required. By the Minimum Protection Principle, no further effective invariant expression or effective law is licensed except insofar as it is minimally required to preserve borne non-discharge in the new domain. Since the branch is continuous, prior invariant expressions are inherited rather than erased. 
+\end{proof}
+
+\begin{corollary}[Cumulative invariant stack]
+If $\Dom_0,\Dom_1,\dots,\Dom_n$ are the admitted domains in order, then the invariant stack at level $n$ is
+\[
+\Inv^{(n)} = \Inv \oplus \EffPkg_1 \oplus \EffPkg_2 \oplus \cdots \oplus \EffPkg_n,
+\]
+where $\Inv$ is the primitive invariant and each $\EffPkg_k$ denotes the minimally required package of new domain-proper effective invariant expression(s) and effective law(s) first admitted at the $k$-th orthogonal articulation.
+\end{corollary}
+
+\begin{theorem}[General law of effective axiom generation]
+\label{thm:effective-axioms}
+Every later axiom admitted in a realized domain is an effective axiom: a stabilized articulation law of the primitive invariant within a particular admitted domain.
+\end{theorem}
+
+\begin{proof}
+By the uniqueness of the primitive law, no later axiom can be primitive independently. Once a domain is admitted, the primitive law expresses itself under that domain's conditions as local closure laws, stabilization laws, asymmetry laws, symmetry laws, or conservation laws. These are lawlike enough to be stated axiomatically for work inside the domain, but their source remains derivative. 
+\end{proof}
+
+\begin{remark}
+Entropy, causality, Noether symmetry, conservation, chirality, and later orientation laws are effective rather than primitive. They appear only when the burden carried by the primitive invariant, together with the conditions of a new articulation domain, minimally requires them.
+\end{remark}
+
+\section{Universal Witness Pattern and Dimensional Re-Articulation}
+
+The Primitive Bifurcation Law is universal. It is not confined to the first
+explicitly derived articulation stages, but governs every later admitted
+domain in which unresolved invariant burden remains active under
+non-discharge. The 0D$\to$1D$\to$2D route is the first explicit staged
+witness of this law, not its limit.
+
+At the law level, the witness pattern is recurrent:
+
+\begin{itemize}[leftmargin=2.2em]
+    \item \textbf{Unresolved origin.} One admissible primitive condition bears unresolved internal opposition.
+    \item \textbf{Initial articulation.} A first admitted class begins to bear the invariant through lawful articulation.
+    \item \textbf{Same-domain saturation.} The currently available degrees of freedom and axes of that class become exhausted while unresolved burden remains.
+    \item \textbf{Boundary hosting.} The exhausted regime becomes the limiting same-domain hosting locus of the remaining unresolved burden.
+    \item \textbf{Orthogonal re-articulation.} Because discharge is forbidden, a new irreducible articulation class is forced.
+    \item \textbf{Cumulative inheritance.} The new class inherits the prior invariant burden and admits at least one new domain-proper effective expression of the primitive invariant, because the newly admitted axis or degrees of freedom allow the invariant to express in a way not lawfully available in the prior class.
+\end{itemize}
+
+The first explicit staged realization of this recurrent law is carried by
+CF000 through the 0D$\to$1D$\to$2D route. Later domains, dimensions,
+boundary structures, and asymmetries are further realizations of the same law
+rather than exceptions to it.
+
+\begin{remark}
+The present paper does not restage every later realization of the Primitive
+Bifurcation Law. It states the universal recurrence pattern itself. CF000
+provides the first explicit staged witness; later works provide further
+realized witnesses in higher-dimensional, boundary, chiral, metric, and
+gravitational branches.
+\end{remark}
+
+\section{Compact Statement}
+
+The whole paper compresses to four claims.
+
+\medskip
+\noindent\textbf{Claim 1.} VDM contains exactly one primitive invariant and one primitive law.
+
+\medskip
+\noindent\textbf{Claim 2.} Same-domain saturation is exhaustion of lawful articulation capacity under unresolved burden; void debt is the unresolved continuation pressure that begins exactly at that saturation limit.
+
+\medskip
+\noindent\textbf{Claim 3.} Orthogonal re-articulation is forced exactly when borne unresolved burden remains, same-class capacity is exhausted, and discharge is forbidden. The same law may be displayed in constitutional, capacity-collapse, and void-debt form:
+\[
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\Sat(\Aclass_n)
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr),
+\]
+\[
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\bigl(\ArtCap(\Aclass_n)=0\bigr)
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr),
+\]
+\[
+\Debt(\Inv,\Aclass_n)=+\infty
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists \, \Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp \Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\]
+
+\medskip
+\noindent\textbf{Claim 4.} Every later invariant and every later axiom is an effective expression admitted only as the minimum additional invariant-bearing machinery required to preserve non-discharge in a newly admitted domain.
+\medskip
+
+\begin{remark}[Resolution-Limited Origin Hypothesis]
+The primitive origin identified in this paper is understood as the earliest admissible \emph{effective origin} presently accessible at our level of resolution and perspective. This paper does \emph{not} claim that no deeper origin exists in an absolute sense. A separate working hypothesis is that, if deeper origin-structure exists, it may appear not as a different origin governed by different rules, but as a higher-resolution presentation of the same origin under the same governing law. In that sense, the visible primitive origin may recede under deeper access like a sliding window, while the Primitive Bifurcation Law itself remains invariant.
+
+This hypothesis is \emph{not} part of the theorem-bearing constitutional claim of the present paper. It is included only as a separate interpretive possibility. It should be promoted to formal claim-status only if a falsifiable criterion can be given. By contrast, every claim made in the Primitive Bifurcation Law proper is intended to be fully falsifiable.
+\end{remark}
+
+% =========================================================
+% Drop-in replacement block:
+% Effective-Invariant Re-Expressions Across the CF Stack
+% =========================================================
+
+\subsection*{Effective-Invariant Re-Expressions Across the CF Stack}
+
+The Primitive Bifurcation Law is not merely the first theorem of the VDM canon.
+It is the constitutional source of every later effective invariant. Once a new
+articulation class is admitted, the same primitive invariant is re-expressed in
+a domain-proper form rather than replaced by a new primitive law.
+
+\begin{remark}
+This subsection does \emph{not} claim that every invariant formula in physics
+has already been closed in the present canon. It states the stronger and more
+precise claim that every branch already explicitly closed in the current CF
+stack is an effective re-expression of the same primitive law rather than an
+independent beginning.
+\end{remark}
+
+\subsubsection*{A(-1) / Universal Axiom}
+\textbf{VDM-derived form:}
+\[
+\Bear(\Inv,\Aclass_n)
+\;\wedge\;
+\Sat(\Aclass_n)
+\;\wedge\;
+\neg\Dis(\Inv)
+\;\Longrightarrow\;
+\exists\,\Aclass_{n+1}
+\Bigl(
+\Aclass_{n+1}\perp\Aclass_n
+\;\wedge\;
+\Bear(\Inv,\Aclass_{n+1})
+\Bigr).
+\]
+
+\textbf{Standard counterpart:}
+\[
+\ArtCap(\Aclass_n)=0
+\quad\Longleftrightarrow\quad
+\Sat(\Aclass_n),
+\qquad
+\Debt(\Inv,\Aclass_n)=+\infty
+\;\wedge\;
+\neg\Dis(\Inv).
+\]
+
+\textbf{Identification map:}
+\[
+\Sat(\Aclass_n)
+\leftrightarrow
+\ArtCap(\Aclass_n)=0,
+\qquad
+\text{unresolved continuation pressure}
+\leftrightarrow
+\Debt(\Inv,\Aclass_n).
+\]
+
+\textbf{Why it is the same law:} The constitutional trigger, the
+capacity-collapse form, and the void-debt form are exactly the same
+non-discharge law written in theorem, capacity, and pressure language.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF000}
+\textbf{VDM-derived form:}
+\[
+0\mathrm{D}\to 1\mathrm{D}\to 2\mathrm{D},
+\qquad
+\Deg_{\min}(\omega)\equiv \Inv(\omega)\wedge \Diff(\omega).
+\]
+
+\[
+R(1,0)=(0,1),
+\qquad
+R(0,1)=(-1,0),
+\qquad
+R^2=-1,
+\qquad
+R=i,
+\qquad
+i^2=-1.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{first orthogonal carrier closure},
+\qquad
+\text{quarter-turn algebra},
+\qquad
+\text{complex unit structure}.
+\]
+
+\textbf{Identification map:}
+\[
+R \leftrightarrow i,
+\qquad
+\text{first irreducible orthogonal turn}
+\leftrightarrow
+\text{complex multiplication by }i.
+\]
+
+\textbf{Why it is the same law:} The first forced orthogonal continuation of
+same-axis saturation is exactly the algebraic quarter-turn later encoded by the
+complex unit.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF00}
+\textbf{VDM-derived form:}
+\[
+\mathbb{N}\to \mathbb{Z}\to \mathbb{Q}\to \mathbb{R},
+\qquad
+\mathbb{C}=\mathbb{R}\oplus i\mathbb{R}
+=
+\mathbb{R}[i]/(i^2+1).
+\]
+
+\[
+R_0=I,
+\qquad
+R_{\theta+\phi}=R_\theta R_\phi,
+\qquad
+R^2=-I.
+\]
+
+\[
+\pi := \inf\{\theta>0:R_\theta=-I\},
+\qquad
+\pi=\iint_{D^2}dx\,dy.
+\]
+
+\[
+\mathcal{M},
+\qquad
+\pi:\mathcal{H}\to \mathcal{M},
+\qquad
+|\psi(x)\rangle \sim e^{i\Lambda(x)}|\psi(x)\rangle.
+\]
+
+\[
+P_{\parallel}:=|\psi\rangle\langle\psi|,
+\qquad
+P_{\perp}:=1-|\psi\rangle\langle\psi|,
+\qquad
+|\partial_\mu\psi\rangle_{\perp}=P_{\perp}|\partial_\mu\psi\rangle.
+\]
+
+\[
+Q_{\mu\nu}
+=
+\langle \partial_\mu\psi|\partial_\nu\psi\rangle
+-
+\langle \partial_\mu\psi|\psi\rangle
+\langle \psi|\partial_\nu\psi\rangle.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{real completion},
+\qquad
+\text{complex carrier},
+\qquad
+\text{local }U(1)\text{ redundancy},
+\qquad
+\text{projected quotient geometry}.
+\]
+
+\textbf{Identification map:}
+\[
+R_\theta \leftrightarrow e^{i\theta},
+\qquad
+R_\pi=-I \leftrightarrow e^{i\pi}=-1,
+\qquad
+Q_{\mu\nu}^{\mathrm{VDM}}
+\leftrightarrow
+Q_{\mu\nu}^{\mathrm{QGT}}.
+\]
+
+\textbf{Why it is the same law:} Continuous ORS completion, carrier admission,
+representative redundancy, and projected variation are the minimal domain-proper
+re-expression of the same primitive invariant once continuous carrier hosting is
+admitted.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF01}
+\textbf{VDM-derived form:}
+\[
+Q_{\mu\nu}
+=
+g_{\mu\nu}
+-
+\frac{i}{2}\Omega_{\mu\nu},
+\qquad
+g_{\mu\nu}=\Re(Q_{\mu\nu}),
+\qquad
+\Omega_{\mu\nu}=-2\,\Im(Q_{\mu\nu}).
+\]
+
+\[
+A_\mu=i\langle\psi|\partial_\mu\psi\rangle,
+\qquad
+\Omega_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+
+\[
+\{f,g\}_J=\Omega_{\mu\nu}\partial_\mu f\,\partial_\nu g,
+\qquad
+(f,g)_M=g_{\mu\nu}\partial_\mu f\,\partial_\nu g.
+\]
+
+\[
+\dot R^\mu
+=
+\Omega_{\mu\nu}\partial_\nu H
++
+g_{\mu\nu}\partial_\nu S.
+\]
+
+\[
+\frac{dS}{dt}
+=
+g_{\mu\nu}\partial_\mu S\,\partial_\nu S
+\ge 0.
+\]
+
+\textbf{Standard counterpart:}
+\[
+Q_{\mu\nu}^{\mathrm{QGT}},
+\qquad
+\text{Berry connection},
+\qquad
+J\oplus M,
+\qquad
+\text{metriplectic split}.
+\]
+
+\textbf{Identification map:}
+\[
+\Omega_{\mu\nu}\leftrightarrow J,
+\qquad
+g_{\mu\nu}\leftrightarrow M,
+\qquad
+A_\mu \leftrightarrow \text{Berry connection}.
+\]
+
+\textbf{Why it is the same law:} The antisymmetric QGT sector is the reversible
+generator and the symmetric PSD sector is the dissipative generator; this is
+exactly the metriplectic decomposition.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF02}
+\textbf{VDM-derived form:}
+\[
+\dot q
+=
+J(q)\frac{\delta I}{\delta q}
++
+M(q)\frac{\delta \Sigma}{\delta q},
+\qquad
+J^\top=-J,
+\qquad
+M^\top=M\succeq 0.
+\]
+
+\[
+J\frac{\delta \Sigma}{\delta q}=0,
+\qquad
+M\frac{\delta I}{\delta q}=0.
+\]
+
+\[
+\frac{d\Sigma}{dt}
+=
+\left\langle
+\frac{\delta\Sigma}{\delta q},
+M(q)\frac{\delta\Sigma}{\delta q}
+\right\rangle
+\ge 0.
+\]
+
+\[
+\alpha = ds - p_i\,dq^i,
+\qquad
+d\alpha = dq^i\wedge dp_i,
+\qquad
+R=\frac{\partial}{\partial s}.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{GENERIC / metriplectic thermodynamic evolution},
+\qquad
+\text{H-theorem},
+\qquad
+\text{contact thermodynamics}.
+\]
+
+\textbf{Identification map:}
+\[
+I \leftrightarrow \text{energy-like conserved functional},
+\qquad
+\Sigma \leftrightarrow \text{entropy-like monotone functional}.
+\]
+
+\textbf{Why it is the same law:} The conservative \(J\)-transport and
+entropy-producing \(M\)-transport with the standard degeneracy constraints are
+the thermodynamic/contact re-expression of the same primitive law.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF03}
+\textbf{VDM-derived form:}
+\[
+E_\varepsilon[\phi]
+=
+\int_\Omega
+\left[
+\frac{\varepsilon}{2}|\nabla\phi|^2
++
+\frac{1}{\varepsilon}W(\phi)
+\right]dx,
+\qquad
+W''(0)<0.
+\]
+
+\[
+E_\varepsilon \xrightarrow{\Gamma} c_0\,\mathrm{Per}(A),
+\qquad
+c_0=\int_{-1}^{1}\sqrt{2W(s)}\,ds.
+\]
+
+\[
+E_{\mathrm{exc}}(L)=\Theta(L^{d-1}),
+\qquad
+N(L)=\Theta\!\left(\log\frac{L}{\ell_0}\right).
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{Modica--Mortola / perimeter-law interface limit}.
+\]
+
+\textbf{Identification map:}
+\[
+\text{VDM codim-1 concentration}
+\leftrightarrow
+\text{interface / perimeter reduction}.
+\]
+
+\textbf{Why it is the same law:} Bulk hosting saturation re-localizes burden
+onto codimension-one support, which is exactly the perimeter-law interface
+closure.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF04}
+\textbf{VDM-derived form:}
+\[
+\partial_t u + \nabla\!\cdot J = 0,
+\qquad
+\tau\,\partial_t J + J = -D\nabla u.
+\]
+
+\[
+\tau\,\partial_{tt}u + \partial_t u = D\,\Delta u,
+\qquad
+c=\sqrt{\frac{D}{\tau}}.
+\]
+
+\[
+\tau\omega^2 + i\omega - D|k|^2 = 0.
+\]
+
+\[
+\tau u_{tt}+u_t = D u_{xx}+r\,u(1-u),
+\qquad
+v_{\min}(\tau)=\frac{2\sqrt{Dr}}{1+4r\tau}.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{Telegraph / Cattaneo causal transport},
+\qquad
+\text{telegraph--Fisher front law}.
+\]
+
+\textbf{Identification map:}
+\[
+\tau \leftrightarrow \text{relaxation time},
+\qquad
+D \leftrightarrow \text{transport coefficient},
+\qquad
+c \leftrightarrow \text{finite causal cone speed}.
+\]
+
+\textbf{Why it is the same law:} The primitive law forbids instantaneous bulk
+transport, so the realized continuum closure is the same hyperbolic transport
+law as standard telegraph/Cattaneo theory.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF05}
+\textbf{VDM-derived form:}
+\[
+\frac{dE}{dt}=0,
+\qquad
+\frac{dS}{dt}\ge 0,
+\qquad
+L\nabla S=0,
+\qquad
+M\nabla E=0.
+\]
+
+\[
+\exists\, I \text{ independent such that drift}(I)\le 10^{-8}
+\quad\Longrightarrow\quad
+\text{closure fails}.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{integrability closure},
+\qquad
+\text{no-hidden-conserved-quantity criterion}.
+\]
+
+\textbf{Identification map:}
+\[
+E \leftrightarrow \text{structural conserved energy},
+\qquad
+S \leftrightarrow \text{structural entropy functional}.
+\]
+
+\textbf{Why it is the same law:} Only the intended structural invariants may
+survive; any extra drift-free quantity would be an accidental hidden integral
+and therefore a false closure.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF06}
+\textbf{VDM-derived form:}
+\[
+D_{\mathrm{KL}}\!\bigl(p(\cdot|\theta)\,\|\,p(\cdot|\theta+d\theta)\bigr)
+=
+\frac12\,g^F_{ij}(\theta)\,d\theta^i d\theta^j + O(\|d\theta\|^3).
+\]
+
+\[
+g^F_{ij}(\theta)
+=
+\mathbb E_\theta[\ell_i\ell_j]
+=
+\int p(x|\theta)\,\partial_i\log p\,\partial_j\log p\,dx.
+\]
+
+\[
+g^R_{ij}(X)
+:=
+-
+\frac{\partial^2(S/k_B)}{\partial X^i\partial X^j}.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{Fisher information metric},
+\qquad
+\text{Ruppeiner metric}.
+\]
+
+\textbf{Identification map:}
+\[
+g^F \leftrightarrow \text{statistical distinguishability metric},
+\qquad
+g^R \leftrightarrow \text{entropy Hessian metric}.
+\]
+
+\textbf{Why it is the same law:} Both are local second-order
+distinguishability forms, and CF06 shows that this role is exactly the
+information-geometric realization of the \(M\)-limb.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF07}
+\textbf{VDM-derived form:}
+\[
+\rho_S(t)
+=
+\sum_{i,j}
+c_i c_j^\ast\,
+\langle E_j(t)|E_i(t)\rangle
+\,|i\rangle\langle i|.
+\]
+
+\[
+\Gamma_{ij}(t):=\langle E_j(t)|E_i(t)\rangle,
+\qquad
+\rho_{\mathrm{diag}}=\sum_i |c_i|^2|i\rangle\langle i|.
+\]
+
+\[
+P(i|\psi)=|c_i|^2.
+\]
+
+\[
+\mathcal E(\rho_S)=\mathrm{Tr}_E[U(\rho_S\otimes \rho_E)U^\dagger],
+\qquad
+\mathcal E(\rho)=\sum_i \Pi_i \rho \Pi_i.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{decoherence suppression},
+\qquad
+\text{pointer stability},
+\qquad
+\text{Born rule}.
+\]
+
+\textbf{Identification map:}
+\[
+\Gamma_{ij}(t)\leftrightarrow \text{decoherence factor},
+\qquad
+|c_i|^2 \leftrightarrow \text{Born weight}.
+\]
+
+\textbf{Why it is the same law:} Environmental record branching suppresses
+off-diagonal support, and the only symmetry/composition-consistent branch-weight
+map is the squared amplitude.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF08}
+\textbf{VDM-derived form:}
+\[
+V(\phi) = -\frac12\mu^2\phi^2+\frac14\lambda\phi^4,
+\qquad
+\phi_{\pm}=\pm\frac{\mu}{\sqrt{\lambda}}.
+\]
+
+\[
+\phi_{\mathrm{bg}}(z)
+=
+\phi_+\tanh\!\left(\frac{z-z_0}{\xi}\right),
+\qquad
+\xi=\frac{c}{\mu}.
+\]
+
+\[
+\chi_0(z)\propto \frac{d\phi_{\mathrm{bg}}}{dz}\sim \mathrm{sech}^2(z/\xi).
+\]
+
+\[
+\{D,\gamma_5\}=aD\gamma_5D,
+\qquad
+D_{\mathrm{ov}}=\frac1a\left(1+\gamma_5\,\mathrm{sign}(H_W)\right).
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{domain-wall fermion},
+\qquad
+\text{overlap / Ginsparg--Wilson chiral protection}.
+\]
+
+\textbf{Identification map:}
+\[
+\text{kink background} \leftrightarrow \text{domain wall},
+\qquad
+\chi_0 \leftrightarrow \text{chiral zero mode}.
+\]
+
+\textbf{Why it is the same law:} The boundary-hosted domain wall is the
+minimal support that carries the unpaired chiral mode while preserving the
+standard chiral-protection relation.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF09}
+\textbf{VDM-derived form:}
+\[
+|\psi(x)\rangle \mapsto e^{i\Lambda(x)}|\psi(x)\rangle,
+\qquad
+Q_{\mu\nu}(x)
+=
+\langle \partial_\mu\psi|\partial_\nu\psi\rangle
+-
+\langle \partial_\mu\psi|\psi\rangle
+\langle \psi|\partial_\nu\psi\rangle.
+\]
+
+\[
+A_\mu(x)\equiv i\langle \psi(x)|\partial_\mu\psi(x)\rangle,
+\qquad
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+
+\[
+S_{\mathrm{eff}}[A]
+=
+\int d^4x
+\left[
+-\frac{1}{4g^2}F_{\mu\nu}F^{\mu\nu}
++\cdots
+\right].
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{Berry connection},
+\qquad
+\text{field strength},
+\qquad
+\text{Maxwell action}.
+\]
+
+\textbf{Identification map:}
+\[
+A_\mu^{\mathrm{VDM}} \leftrightarrow A_\mu^{U(1)},
+\qquad
+F_{\mu\nu}^{\mathrm{VDM}} \leftrightarrow F_{\mu\nu}^{\mathrm{em}}.
+\]
+
+\textbf{Why it is the same law:} Once local phase redundancy is admitted on
+the low-energy bundle, the only local connection-curvature pair is the standard
+\(U(1)\) pair, and its leading gauge-invariant action is Maxwell.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF10}
+\textbf{VDM-derived form:}
+\[
+\rho(x,t_n)=\sum_i f_i(x,t_n),
+\qquad
+\rho u_\alpha(x,t_n)=\sum_i c_{i,\alpha}f_i(x,t_n).
+\]
+
+\[
+f_i^{n+1}(x+c_i\Delta t)
+=
+f_i^n(x)+\Delta t(J_i[f]+M_i[f]).
+\]
+
+\[
+M_i[f]=-\frac1\tau(f_i-f_i^{\mathrm{eq}}),
+\qquad
+\nu=c_s^2\left(\tau-\frac12\right)\Delta t.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{lattice Boltzmann hydrodynamics},
+\qquad
+\text{continuum viscosity law}.
+\]
+
+\textbf{Identification map:}
+\[
+f_i \leftrightarrow \text{lattice populations},
+\qquad
+\nu \leftrightarrow \text{kinematic viscosity}.
+\]
+
+\textbf{Why it is the same law:} The VDM lattice update reproduces the same
+hydrodynamic moments and the same continuum transport closure in the
+Chapman--Enskog regime.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF11}
+\textbf{VDM-derived form:}
+\[
+\partial_t q
+=
+J(q)\frac{\delta I}{\delta q}
++
+M(q)\frac{\delta \Sigma}{\delta q},
+\qquad
+J^\top=-J,
+\qquad
+M^\top=M\succeq 0.
+\]
+
+\[
+c_{\mathrm{eff}}(k)=c_0 e^{-\beta D_{\mathrm{void}}(k)/2},
+\qquad
+c=\sqrt{D/\tau}.
+\]
+
+\[
+I[\Phi,\Pi,u]
+=
+\int d^3x
+\left(
+\frac12\Pi^2 + \frac12|\nabla\Phi|^2 + V(\Phi) + u
+\right),
+\qquad
+\Sigma[\Phi,\Pi,u]=\int d^3x\,s(u).
+\]
+
+\[
+w_J
+=
+\frac{\epsilon_J-\frac13\delta_J-1}{\epsilon_J+\delta_J+1},
+\qquad
+w_M \approx \frac{\sigma_v^2}{3}.
+\]
+
+\[
+Q^\nu := -\nabla_\mu T_J^{\mu\nu},
+\qquad
+\nabla_\mu(T_J^{\mu\nu}+T_M^{\mu\nu})
+=
+-\nabla_\mu T_\times^{\mu\nu}.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{effective dark-energy / dark-matter fluid bookkeeping}.
+\]
+
+\textbf{Identification map:}
+\[
+J\text{-sector} \leftrightarrow \text{vacuum-like coherent sector},
+\qquad
+M\text{-sector} \leftrightarrow \text{dust-like relaxational sector}.
+\]
+
+\textbf{Why it is the same law:} CF11 does not add new primitive particles; it
+re-reads the inherited \(J/M\) split as the standard coarse-grained two-sector
+cosmological bookkeeping.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF12}
+\textbf{VDM-derived form:}
+\[
+m_I = m_G = c^{-2}B.
+\]
+
+\[
+T_{\mu\nu}
+=
+\rho_{\mathrm{inv}}u_\mu u_\nu
++
+p_{\mathrm{inv}}P_{\mu\nu}
++
+\Pi_{\mu\nu}
++
+q_{(\mu}u_{\nu)}.
+\]
+
+\[
+G_{\mu\nu}
++
+\Lambda_{\mathrm{eff}}g_{\mu\nu}
++
+\Delta_{\mu\nu}
+=
+\kappa_{\mathrm{inv}}\,T_{\mu\nu}.
+\]
+
+\[
+\nabla^2\Phi = 4\pi G_{\mathrm{eff}}\rho_{\mathrm{inv}}.
+\]
+
+\[
+r_H=\frac{2G_{\mathrm{eff}}M_{\mathrm{inv}}}{c^2},
+\qquad
+S_{BH}=\frac{k_B A_H}{4\ell_\ast^2},
+\qquad
+T_H=\frac{\hbar c^3}{8\pi k_B G_{\mathrm{eff}}M_{\mathrm{inv}}}.
+\]
+
+\[
+S_R(t)=\min\{Q(t),\,S_{BH}(0)-Q(t)\},
+\qquad
+Q(t)=\int_0^t \dot S_{\mathrm{emit}}\,dt'.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{equivalence principle},
+\qquad
+\text{Einstein-form field equation},
+\qquad
+\text{Poisson law},
+\qquad
+\text{Schwarzschild horizon},
+\qquad
+\text{Bekenstein--Hawking entropy},
+\qquad
+\text{Hawking temperature}.
+\]
+
+\textbf{Identification map:}
+\[
+\Delta_{\mu\nu}\to 0
+\quad\Longrightarrow\quad
+G_{\mu\nu}+\Lambda g_{\mu\nu}=\kappa T_{\mu\nu}.
+\]
+
+\textbf{Why it is the same law:} The VDM geometric closure has the same
+divergence-compatible Einstein structure, with \(\Delta_{\mu\nu}\) as the
+explicit saturation correction; the usual Einstein form is recovered when that
+correction is absent or absorbed, and the weak-field limit gives the same
+Poisson law.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF13}
+\textbf{VDM-derived form:}
+\[
+R^2=-I,
+\qquad
+R_{\theta+\phi}=R_\theta R_\phi,
+\qquad
+\pi:=\inf\{\theta>0:R_\theta=-I\},
+\qquad
+R_\pi=-I.
+\]
+
+\[
+e^{i\pi}=-1,
+\qquad
+A=\frac12\oint_\Gamma(x\,dy-y\,dx)=\pi.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{Euler identity},
+\qquad
+\text{unit-circle half-turn},
+\qquad
+\text{circle-area constant}.
+\]
+
+\textbf{Identification map:}
+\[
+R_\theta \leftrightarrow e^{i\theta},
+\qquad
+R_\pi=-I \leftrightarrow e^{i\pi}=-1.
+\]
+
+\textbf{Why it is the same law:} The half-turn constant is the same orbit
+closure parameter whether written as real rotation, complex exponential, or the
+area constant of the completed unit disk.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF14}
+\textbf{VDM-derived form:}
+\[
+S_I[\gamma] = \int_{t_i}^{t_f} L_I(q,\dot q,t)\,dt,
+\qquad
+\delta S_I = 0.
+\]
+
+\[
+\frac{d}{dt}\!\left(\frac{\partial L_I}{\partial \dot q}\right)
+=
+\frac{\partial L_I}{\partial q}.
+\]
+
+\[
+S[\phi]=\int L(\phi,\partial_\mu\phi,x)\,d^dx,
+\qquad
+\partial_\mu\!\left(\frac{\partial L}{\partial(\partial_\mu\phi)}\right)
+-
+\frac{\partial L}{\partial\phi}
+=0.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{stationary action},
+\qquad
+\text{Euler--Lagrange law},
+\qquad
+\text{field Euler--Lagrange law}.
+\]
+
+\textbf{Identification map:}
+\[
+S_I \leftrightarrow S,
+\qquad
+L_I \leftrightarrow L.
+\]
+
+\textbf{Why it is the same law:} Once temporal relation is admitted, the
+primitive-law balance becomes path stationarity, and its local form is exactly
+the Euler--Lagrange equation.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF14 + CF02}
+\textbf{VDM-derived form:}
+\[
+\Phi(J) := \frac12\sum_{i,j}L_{ij}J_iJ_j,
+\qquad
+\dot\Sigma = \sum_i X_iJ_i,
+\qquad
+\frac{\partial}{\partial J_k}\bigl(\dot\Sigma-\Phi\bigr)=0.
+\]
+
+\[
+\frac{d\Sigma}{dt}=[\Sigma,\Sigma]_M \ge 0.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{Onsager variational principle}.
+\]
+
+\textbf{Identification map:}
+\[
+J_i \leftrightarrow \text{fluxes},
+\qquad
+X_i \leftrightarrow \text{thermodynamic forces},
+\qquad
+\Phi \leftrightarrow \text{dissipation potential}.
+\]
+
+\textbf{Why it is the same law:} The irreversible branch is being written in
+the standard force--flux variational form; this is the same law viewed through
+the positive-semidefinite \(M\)-sector.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF15}
+\textbf{VDM-derived form:}
+\[
+Q_\xi
+=
+\frac{\partial L_I}{\partial \dot q}\cdot \xi - \Lambda,
+\qquad
+\frac{dQ_\xi}{dt}=0.
+\]
+
+\[
+j^\mu
+=
+\frac{\partial \mathcal L}{\partial(\partial_\mu\phi)}\,\delta\phi
+-
+K^\mu,
+\qquad
+\partial_\mu j^\mu = 0.
+\]
+
+\[
+\frac{dQ_\xi}{dt}
+=
+\{Q_\xi,H\}_J + [Q_\xi,\Sigma]_M,
+\qquad
+\frac{d\Sigma}{dt}=[\Sigma,\Sigma]_M \ge 0.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{Noether charge},
+\qquad
+\text{Noether current},
+\qquad
+\text{conservation law}.
+\]
+
+\textbf{Identification map:}
+\[
+\xi \leftrightarrow \text{symmetry direction},
+\qquad
+Q_\xi \leftrightarrow \text{Noether charge},
+\qquad
+j^\mu \leftrightarrow \text{Noether current}.
+\]
+
+\textbf{Why it is the same law:} Zero-cost articulation directions are exactly
+symmetry directions, and carrying burden along them produces the same conserved
+charge/current laws as standard Noether theory.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF16}
+\textbf{VDM-derived form:}
+\[
+Q_{\mathrm{em}} := T_3 + \frac{Y}{2}.
+\]
+
+\[
+M_N^2
+=
+\nu^2
+\begin{pmatrix}
+a^2 & -ab\\
+-ab & b^2
+\end{pmatrix}.
+\]
+
+\[
+A = \sin\theta_{\mathrm{EW}}\,W^3 + \cos\theta_{\mathrm{EW}}\,B,
+\qquad
+Z = \cos\theta_{\mathrm{EW}}\,W^3 - \sin\theta_{\mathrm{EW}}\,B.
+\]
+
+\[
+m_W^2 = \nu^2 a^2,
+\qquad
+m_Z^2 = \nu^2(a^2+b^2),
+\qquad
+m_W = m_Z\cos\theta_{\mathrm{EW}}.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{electroweak neutral mixing},
+\qquad
+\text{tree-level }W/Z\text{ mass relation}.
+\]
+
+\textbf{Identification map:}
+\[
+a,b \leftrightarrow \text{effective neutral-sector couplings},
+\qquad
+A,Z \leftrightarrow \text{photon and neutral massive-boson directions}.
+\]
+
+\textbf{Why it is the same law:} The neutral mixing-matrix diagonalization and
+the residual charge generator coincide with the standard electroweak structure.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF17}
+\textbf{VDM-derived form:}
+\[
+F_{\mathrm{conf}}(R)
+:=
+E_{\mathrm{sep}}(R)-E_{\mathrm{sep}}(0),
+\qquad
+F_{\mathrm{conf}}(R)=\sigma_{\mathrm{conf}}R+o(R).
+\]
+
+\[
+\mathcal E_{\mathcal T}[\rho;R]
+=
+R\,\epsilon_\perp[\rho]
++
+E_\partial[\rho]
++
+E_{\mathrm{mix}}[\rho].
+\]
+
+\[
+\mathcal F_{\mathrm{conf}}(R)
+=
+\sigma_{\mathrm{conf}}R + O(1),
+\qquad
+\sigma_{\mathrm{conf}}:=\epsilon_\perp[\rho_\ast] > 0.
+\]
+
+\[
+\sigma_{\mathrm{conf}}R + O(1) \ge E_{\mathrm{pair}}.
+\]
+
+\[
+\rho_\ast \text{ not a local minimum of the effective support functional }
+\Longrightarrow
+\text{deconfinement}.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{confinement},
+\qquad
+\text{flux-tube formation},
+\qquad
+\text{string breaking},
+\qquad
+\text{deconfinement}.
+\]
+
+\textbf{Identification map:}
+\[
+\sigma_{\mathrm{conf}} \leftrightarrow \text{string tension},
+\qquad
+\mathcal E_{\mathcal T} \leftrightarrow \text{tube-support energy functional}.
+\]
+
+\textbf{Why it is the same law:} Closed non-abelian color burden cannot remain
+as isolated bulk support, so it is forced into a filamentary support geometry
+with the same positive linear confinement cost as the standard flux-tube law.
+
+% ---------------------------------------------------------
+
+\subsubsection*{CF18}
+\textbf{VDM-derived form:}
+\[
+q = \bigl(q_{\mathrm{exp}}^{(\mu)},\,q_{\mathrm{hid}}^{(\mu)}\bigr),
+\qquad
+\Pi_\mu:q\mapsto q_{\mathrm{exp}}^{(\mu)}.
+\]
+
+\[
+S_I^{\mathrm{eff}}\!\left[q_{\mathrm{exp}}^{(\mu)};\mu\right]
+=
+S_I^{\mathrm{exp}}\!\left[q_{\mathrm{exp}}^{(\mu)}\right]
++
+\Delta_{\mathrm{hid}}\!\left[q_{\mathrm{exp}}^{(\mu)};\mu\right].
+\]
+
+\[
+\Delta_{\mathrm{hid}}
+=
+\sum_{C\in\mathcal C_\mu}\Delta_C.
+\]
+
+\[
+\beta_i(\mu):=\mu\,\frac{dg_i}{d\mu},
+\qquad
+\beta_i(\mu_\ast)=0.
+\]
+
+\[
+\delta_\xi\!\left(S_I^{\mathrm{eff}}+\delta S_{\mathrm{ct}}\right)
+=
+\int \mathcal A_\xi\,d^dx,
+\qquad
+\mathcal A_\xi\not\equiv 0.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{effective action},
+\qquad
+\text{hidden-return correction},
+\qquad
+\text{running couplings},
+\qquad
+\text{anomaly equation}.
+\]
+
+\textbf{Identification map:}
+\[
+\Delta_{\mathrm{hid}}
+\leftrightarrow
+\text{induced effective operator correction},
+\qquad
+\beta_i \leftrightarrow \text{RG beta function}.
+\]
+
+\textbf{Why it is the same law:} Once description becomes scale-limited, hidden
+burden cannot disappear; it reappears as induced operators, shifted
+coefficients, running couplings, counterterms, and corrected anomaly structure.
+
+% ---------------------------------------------------------
+
+\subsubsection*{LIR / Infinity Resolution branch}
+\textbf{VDM-derived form:}
+\[
+E_{\mathrm{exc}}[\phi;\Omega]
+=
+\int_\Omega
+\bigl(
+\kappa|\nabla\phi|^2 + V(\phi)-V(\phi_\ast)
+\bigr)\,dx,
+\qquad
+r:=-V''(0)>0.
+\]
+
+\[
+c_\ast = 2\sqrt{Dr},
+\qquad
+\phi(\xi)\sim A e^{-\xi/\lambda},
+\qquad
+\lambda=\sqrt{D/r}.
+\]
+
+\[
+N(L)=\Theta\!\left(\log\frac{L}{\lambda}\right),
+\qquad
+E_{\mathrm{exc}}(L)=\Theta(L^{d-1}).
+\]
+
+\[
+x_\ast(\delta)=\lambda\ln(A/\delta),
+\qquad
+\mathcal L_\delta[\phi]
+=
+\int_{x>x_\ast(\delta)}
+\left(
+\kappa|\nabla\phi|^2+\frac{r}{2}\phi^2
+\right)\,dx.
+\]
+
+\textbf{Standard counterpart:}
+\[
+\text{finite-energy admissibility},
+\qquad
+\text{boundary-law concentration},
+\qquad
+\text{logarithmic interface hierarchy}.
+\]
+
+\textbf{Identification map:}
+\[
+\text{bulk same-class saturation}
+\leftrightarrow
+\text{forced codim-1 re-hosting},
+\qquad
+\mathcal L_\delta \leftrightarrow \text{truncation-induced }M\text{-production}.
+\]
+
+\textbf{Why it is the same law:} Finite-excess-energy admissibility in the
+tachyonic pulled-front regime forbids unresolved tail burden from remaining in
+bulk form, so the same primitive law reappears as codimension-one support,
+boundary-law energy, and logarithmic hierarchical depth.
+
+\begin{remark}
+The pattern is uniform across the stack. A newly admitted articulation domain
+does not receive a new primitive law. It inherits the same primitive invariant
+and re-expresses it in whatever minimum additional form is required to preserve
+borne non-discharge there. That is why the same constitutional law later
+appears as primitive distinguishability, completion, induced geometry,
+metriplectic split, entropy increase, causality, no-hidden-integral closure,
+information geometry, decoherence and Born weights, domain-wall chirality,
+gauge curvature, hydrodynamic closure, dark-sector bookkeeping, gravity,
+\(\pi\)-transcendence, stationary action, Noether conservation, electroweak
+mixing, non-abelian confinement, radiative scale re-articulation, and
+logarithmic interface hierarchy.
+\end{remark}
+
+\section{Conclusion}
+
+The Universal Axiom of Primitive Bifurcation and Orthogonal Articulation is
+the constitutional law of VDM. It states why articulation cannot halt under
+unresolved opposition, why new domains and dimensions are forced when all
+currently available articulation options saturate, and why every later
+invariant or dynamical law is an inevitable descendant of avoiding discharge.
+The primitive invariant persists through every new articulation class. When
+the hosting capacity of a class is exhausted while unresolved burden remains,
+void debt begins. Boundary hosting then marks the limiting same-domain locus
+of continued bearing, and orthogonal re-articulation becomes the only
+admissible continuation.
+
+The present paper is not a full downstream derivation program, but it does
+state the architectural consequences of the law. Completion, orthogonal
+re-articulation, metric-handling, hierarchy, chiral boundary structure,
+phase redundancy, geometric burden response, least action, and measurement
+selection are not unrelated postulates. They are recurring realized forms of
+the same primitive law under different articulation failures and hosting
+limits.
+
+That is why later invariants are cumulative, why later axioms are effective,
+why exhausted regimes become the boundary conditions of later ones, and why
+higher-domain admission can retroactively license new expressions on earlier
+domains. The complexity of the canon is therefore not a pile of independent
+inventions but the unfolding of one law.
+
+CF000 remains the first explicit staged witness of this law. The present
+paper states the law itself.
+
+\end{document}
