@@ -1,0 +1,4 @@
+shared   mean0=3729.163740 mean1=3716.537200
+separate mean0=1415.939140 mean1=1543.886560
+ratio sep/shared core0=0.379693475
+ratio sep/shared core1=0.415409957
