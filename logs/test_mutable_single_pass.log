@@ -1,0 +1,30 @@
+density=1
+before
+cell0 opcode=00 c0
+cell1 opcode=00 c0
+cell2 opcode=00 c0
+after_one_call
+cell0 opcode=01 c0
+cell1 opcode=01 c0
+cell2 opcode=01 c0
+
+density=2
+before
+cell0 opcode=00 c0
+cell1 opcode=00 c0
+cell2 opcode=00 c0
+after_one_call
+cell0 opcode=01 c0
+cell1 opcode=01 c0
+cell2 opcode=01 c0
+
+density=3
+before
+cell0 opcode=00 c0
+cell1 opcode=00 c0
+cell2 opcode=00 c0
+after_one_call
+cell0 opcode=01 c0
+cell1 opcode=01 c0
+cell2 opcode=01 c0
+
