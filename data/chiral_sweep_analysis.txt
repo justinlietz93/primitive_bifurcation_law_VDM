@@ -1,0 +1,16 @@
+Density sweep executable choke summary
+
+density=1: shared/separate ratios core0=1.039678, core1=1.027201; sep/shared core0=0.961836, core1=0.973519; shared offset abs mean=9410.878, std=261466.691; separate offset abs mean=8058.672, std=9629.489
+density=2: shared/separate ratios core0=1.000688, core1=1.011739; sep/shared core0=0.999313, core1=0.988397; shared offset abs mean=8004.831, std=9391.831; separate offset abs mean=7438.250, std=8677.057
+density=3: shared/separate ratios core0=0.961559, core1=0.961923; sep/shared core0=1.039977, core1=1.039585; shared offset abs mean=9497.346, std=326066.943; separate offset abs mean=7355.099, std=8781.102
+density=4: shared/separate ratios core0=1.044709, core1=2.319932; sep/shared core0=0.957205, core1=0.431047; shared offset abs mean=6778.819, std=7992.869; separate offset abs mean=11531.157, std=456487.118
+
+Offset-series dominant FFT peaks (normalized frequency, excluding DC):
+density=1 shared: peak_bin=9856, peak_norm_freq=0.492800, peak_power=1.754111e+15
+density=1 separate: peak_bin=9925, peak_norm_freq=0.496250, peak_power=2.967516e+13
+density=2 shared: peak_bin=9966, peak_norm_freq=0.498300, peak_power=2.912189e+13
+density=2 separate: peak_bin=9997, peak_norm_freq=0.499850, peak_power=3.077473e+13
+density=3 shared: peak_bin=8615, peak_norm_freq=0.430750, peak_power=2.460740e+15
+density=3 separate: peak_bin=9858, peak_norm_freq=0.492900, peak_power=1.774026e+13
+density=4 shared: peak_bin=9999, peak_norm_freq=0.499950, peak_power=2.738754e+13
+density=4 separate: peak_bin=9360, peak_norm_freq=0.468000, peak_power=4.700703e+15
