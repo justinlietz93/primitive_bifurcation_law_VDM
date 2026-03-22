@@ -1,0 +1,11 @@
+Reversible executable successor orbit test
+Mutable pair: 00 C0 <-> 01 C0
+initial_state: 00 00 00
+pass_1_cycles=3090 state: 01 01 01
+pass_2_cycles=3334 state: 00 00 00
+pass_3_cycles=3258 state: 01 01 01
+pass_4_cycles=3512 state: 00 00 00
+pass_5_cycles=3024 state: 01 01 01
+pass_6_cycles=3596 state: 00 00 00
+pass_7_cycles=3184 state: 01 01 01
+pass_8_cycles=4442 state: 00 00 00
