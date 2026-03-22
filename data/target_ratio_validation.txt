@@ -1,0 +1,18 @@
+Free-running executable choke target-ratio tuning summary
+
+Search run (30k iters per config, 64 patterns over densities 1..4 per cell):
+- best by target score near 2.15 average: pattern 3,2,4
+  ratio_shared_sep_core0 = 2.239014908853
+  ratio_shared_sep_core1 = 2.298550903597
+- other nearby search candidates included 4,2,1 and 2,2,3.
+
+Validation rerun (100k iters, direct reruns of selected patterns):
+- pattern 3,3,3  -> ratios 2.566342445824 / 1.827114882101
+- pattern 3,2,4  -> ratios 1.129406081059 / 0.922297638094
+- pattern 2,1,4  -> ratios 1.216620690104 / 1.156796799835
+- pattern 1,4,4  -> ratios 0.921727340349 / 1.545528506538
+
+Conclusion:
+- free-running self-mutating executable choke on this VM is not stable enough to tune to a repeatable 2.15 coordinate
+- repeated runs of the same pattern can land in very different timing regimes
+- the observable is dominated by unstable phase/scheduling/self-modification interactions rather than a locked, reproducible resonance on this host
