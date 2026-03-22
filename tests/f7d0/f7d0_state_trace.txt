@@ -1,0 +1,8 @@
+step_1=0xffffffff
+step_2=0x00000000
+step_3=0xffffffff
+step_4=0x00000000
+step_5=0xffffffff
+step_6=0x00000000
+step_7=0xffffffff
+step_8=0x00000000

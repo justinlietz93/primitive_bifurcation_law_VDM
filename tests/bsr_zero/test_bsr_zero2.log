@@ -1,0 +1,18 @@
+BSR with memory source = 0, preset dst = 0xCAFEBABE:
+run 1: out=0xcafebabe zf=1
+run 2: out=0xcafebabe zf=1
+run 3: out=0xcafebabe zf=1
+run 4: out=0xcafebabe zf=1
+run 5: out=0xcafebabe zf=1
+
+BSF with memory source = 0, preset dst = 0xCAFEBABE:
+run 1: out=0xcafebabe zf=1
+run 2: out=0xcafebabe zf=1
+run 3: out=0xcafebabe zf=1
+run 4: out=0xcafebabe zf=1
+run 5: out=0xcafebabe zf=1
+
+Control BSR with source = 0x80001000:
+run 1: out=31 (0x0000001f) zf=0
+run 2: out=31 (0x0000001f) zf=0
+run 3: out=31 (0x0000001f) zf=0
