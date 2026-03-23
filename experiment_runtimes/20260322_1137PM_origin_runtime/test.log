@@ -1,0 +1,9 @@
+initial mut=00 00 00 shadow=00 00 00
+pass_1 mut=00 01 01 shadow=01 01 01
+pass_2 mut=01 01 00 shadow=00 00 00
+pass_3 mut=01 00 01 shadow=01 01 01
+pass_4 mut=00 00 00 shadow=00 00 00
+pass_5 mut=00 01 01 shadow=01 01 01
+pass_6 mut=01 01 00 shadow=00 00 00
+pass_7 mut=01 00 01 shadow=01 01 01
+pass_8 mut=00 00 00 shadow=00 00 00

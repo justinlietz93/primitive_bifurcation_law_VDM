@@ -1,0 +1,68 @@
+This bundle contains the exact source files I generated and ran during the low-level binary-runtime exploration in this conversation.
+
+Scope:
+- All C source files used for the experiments
+- The current log file under discussion (test.log)
+- Notes/summaries I generated while steering the experiments
+
+No hidden project code is required to compile these files.
+They are standalone test harnesses using normal system headers/libraries only.
+
+Typical build pattern used:
+  gcc -O2 -pthread <source>.c -o <binary> -lm
+
+Some files may not require -lm or -pthread, but no private helper library or external project source was used.
+
+Included source files:
+- test_bsr_zero2.c
+- test_cell_chain.c
+- test_dimension_pivot.c
+- test_dualcore_bsr_jitter.c
+- test_active_contention_bsr.c
+- test_force_choke_lockcmpxchg.c
+- test_high_pressure_exec_choke.c
+- test_unfolded_exec_choke.c
+- test_chiral_sweep.c
+- test_mutable_successor_chain.c
+- test_reversible_exec_choke.c
+- test_jm_persistence_orbit.c
+- test_asymmetric_reversible_exec_choke.c
+- test_deferred_asymmetric_orbit.c
+- test_byte_asymmetric_successor.c
+- test_seq.c
+
+Context / notes files:
+- binary_runtime_snapshot_jm.md
+- origin_operator_discriminator_notes.md
+- orbit_reversible_notes.md
+- reversible_exec_choke_notes.md
+- break_threshold_attempts.md
+- test_log_3d_falsifier.md
+
+Current discussed log:
+- test.log
+
+Checksums:
+b88216794d3a65efafc735c2b06e92cd50354d2ddd94d453a36b63448a868d23  /mnt/data/test_bsr_zero2.c
+7dd29a3f61a64e8f44e7fd8b2feb1fdeb7ecd4c7b64109e1196ea08aacfb2893  /mnt/data/test_cell_chain.c
+c49746877e29d7bef49881f938630287505bc23a579548413c011473e09a0d05  /mnt/data/test_dimension_pivot.c
+4a4cbfbb9604fcbb51d53446df4ff7bba0590b383b01cd59582ddfc89f12c916  /mnt/data/test_dualcore_bsr_jitter.c
+ee477f39dc36854416e03f1814b7ed88ad1d24cbfa4379b913b702105c1948f0  /mnt/data/test_active_contention_bsr.c
+58cc105a4ee94745060f5728cd485ba18039f3c9297b626b5031a13e3f5a25b1  /mnt/data/test_force_choke_lockcmpxchg.c
+c91aac7f0491bc83bed925d05d92c05cf03627ff51498cad8cc71451a1555be3  /mnt/data/test_high_pressure_exec_choke.c
+a6da7046b8ce4d388ce1c9077478eb810003838f72b3bb11e5c3c6ea78bceb1b  /mnt/data/test_unfolded_exec_choke.c
+3610edca56897ccf1b447faf94d0f93ec4f76ac4121dd42ec6c0ecca858781e9  /mnt/data/test_chiral_sweep.c
+dab5e26955c06dc7462a30246cf4d629ce20b337c4a87dcc260254468c90d7d2  /mnt/data/test_mutable_successor_chain.c
+fe0084d105e8f01e78e545793dfc757e3f3dafadbb90f048e961f5e9239443de  /mnt/data/test_reversible_exec_choke.c
+c9b7b11b0f29506ee73e1f3a00b9a3ef970c7f5078f14ca145ac6a97c4adc834  /mnt/data/test_jm_persistence_orbit.c
+fd971007fb0a112a7b78d7e72b11a1c37162bcd6abacae4b2732e9ff722e09c9  /mnt/data/test_asymmetric_reversible_exec_choke.c
+c5fbd43cfa07297e75e54d8109c574ea227598464a9d4fefcbce8d45e200bbfa  /mnt/data/test_deferred_asymmetric_orbit.c
+fde957b62a2e5095ff5be4df3cf30911dc5815269954e4e2ac46ad4979c9f757  /mnt/data/test_byte_asymmetric_successor.c
+f92ad8db9a0c93875db64c412ac765834bd44d95beca94001f5b12d00ce9c31a  /mnt/data/test_seq.c
+2cc299253b78641baae611661a4a2309f3eb7cd37e4c7a9426dcbf9a7d525bce  /mnt/data/binary_runtime_snapshot_jm.md
+cee0dba7fa1fff4f817f9b101a9853e0f89d978af433190bacdee670b920713f  /mnt/data/origin_operator_discriminator_notes.md
+cdd140bb55b572f3d4a89d541797daabe2e852eb6c38508e3b53b6a79cd9579b  /mnt/data/orbit_reversible_notes.md
+fd261eed4cbca680d3e41280485aa44d7789b15c5b631a8542ff49085a77978a  /mnt/data/reversible_exec_choke_notes.md
+006cf5c96582539ecee477b6b0e308d9f66679f082c1e3bdcc775ab3cb76826a  /mnt/data/break_threshold_attempts.md
+1ca4eabccfa534e7f3ab74a736ad8ce0d6a02a59b08be47a4bfedc13297f9f77  /mnt/data/test_log_3d_falsifier.md
+770a1a85a576df007bfc5943fac0948426d5789f090a9e522643c1c6db638e6f  /mnt/data/test.log
