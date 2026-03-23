@@ -1,0 +1,33 @@
+Instruction Mnemonic,Operand Format,Category,Description,Cycle Count (886/8286),Addressing Modes Supported,Source
+MOV,"reg, reg/memory/constant",Data Movement,Copies the data from the source operand to the destination operand.,5-11 / 1-5,"Register, Immediate, Indirect, Indexed, Direct, Direct Memory, Indirect Memory",1 2
+ADD,"reg, reg/memory/constant",Arithmetic,"Adds the value of the second operand to the first, leaving the sum in the first operand. Performs addition of binary data.",8-17 / 3-7,"Register, Immediate, Indirect, Indexed, Direct, Memory, Constant (Immediate)",1 2
+SUB,"reg, reg/memory/constant",Arithmetic,"Subtracts the value of the second operand from the first, leaving the difference in the first operand. Performs subtraction of binary data.",8-17 / 3-7,"Register, Immediate, Indirect, Indexed, Direct, Memory, Constant (Immediate)",1 2
+CMP,"reg, reg/memory/constant",Control Transfer,Compares the first operand against the second by subtracting source from destination; saves result for conditional jumps.,8-17 / 3-7,"Register, Immediate, Indirect, Indexed, Direct, Memory",1 2
+AND,"reg, reg/memory/constant",Logical,Computes the bitwise logical AND of the two operands and stores the result into the first.,8-17 / 3-7,"Register, Immediate, Indirect, Indexed, Direct, Memory",1 2
+OR,"reg, reg/memory/constant",Logical,Computes the bitwise logical OR of the two operands and stores the result into the first.,8-17 / 3-7,"Register, Immediate, Indirect, Indexed, Direct, Memory",1 2
+NOT,reg/memory,Logical,Inverts or reverses the bits in the single memory or register operand.,6-15 / 3-8,"Register, Indirect, Indexed, Direct, Memory",1 2
+JMP,dest/label,Control Transfer,Unconditionally transfers control flow immediately to the instruction at the destination address or label.,6-7 / 1,"Immediate (relative), Direct (Label)",1 2
+JE,dest,Control Transfer,Jump to destination if equal (result of previous CMP).,6-8 / 2,Immediate (relative),1
+JNE,dest,Control Transfer,Jump to destination if not equal.,6-8 / 2,Immediate (relative),1
+JB,dest,Control Transfer,Jump to destination if below (unsigned comparison).,6-8 / 2,Immediate (relative),1
+JBE,dest,Control Transfer,Jump to destination if below or equal.,6-8 / 2,Immediate (relative),1
+JA,dest,Control Transfer,Jump to destination if above.,6-8 / 2,Immediate (relative),1
+JAE,dest,Control Transfer,Jump to destination if above or equal.,6-8 / 2,Immediate (relative),1
+GET,None,I/O,Prompts user for a hexadecimal value and stores it into the AX register.,Indeterminate,Implied,1
+PUT,None,I/O,Displays the value of the AX register in hexadecimal.,Indeterminate,Implied,1
+HALT,None,Control Transfer,Terminates program execution.,Indeterminate,Implied,1
+BRK,None,Control Transfer,Pauses the CPU until the user manually restarts it.,Indeterminate,Implied,1
+IRET,None,Control Transfer,Returns control from an interrupt service routine.,Indeterminate,Implied,1
+INC,destination,Arithmetic,Increments an operand by one.,Not in source,"Register, Memory",2
+DEC,destination,Arithmetic,Decrements an operand by one.,Not in source,"Register, Memory",2
+MUL,multiplier,Arithmetic,Multiplies unsigned binary data.,Not in source,"Register, Memory",2
+IMUL,multiplier,Arithmetic,Multiplies signed binary data.,Not in source,"Register, Memory",2
+DIV,divisor,Arithmetic,"Divides unsigned binary data, generating quotient and remainder.",Not in source,"Register, Memory",2
+IDIV,divisor,Arithmetic,"Divides signed binary data, generating quotient and remainder.",Not in source,"Register, Memory",2
+XOR,"operand1, operand2",Logical,Performs bitwise XOR operation.,Not in source,"Register, Memory, Immediate",2
+TEST,"operand1, operand2",Logical,Tests bits by performing AND without changing the first operand.,Not in source,"Register, Memory, Immediate",2
+LOOP,label,Control Transfer,Decrements ECX and jumps to label if ECX is not zero.,Not in source,Direct (Label),2
+PUSH,operand,Data Movement,Stores data on the top of the stack.,Not in source,"Register, Memory",2
+POP,address/register,Data Movement,Retrieves data from the top of the stack.,Not in source,"Register, Memory",2
+CALL,proc_name,Control Transfer,Calls a procedure.,Not in source,Direct (Name),2
+RET,none,Control Transfer,Returns control from a procedure to the calling function.,Not in source,None,2
