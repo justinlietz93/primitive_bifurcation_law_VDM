@@ -1,0 +1,10 @@
+step=2000
+total_terms=4001
+axis1_terms=22
+axis2_terms=3978
+frontier_terms=2001
+unique_x=22
+occupied_pairs=3978
+max_depth=11
+collisions_resolved=3978
+axis2_admitted=1
