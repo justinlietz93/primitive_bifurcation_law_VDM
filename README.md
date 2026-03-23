@@ -12,6 +12,29 @@ Stay in the current class while at least one allowed same-class move still produ
 
 ---
 
+| Term                       | Exact meaning                                                                | Minimal implementation meaning                                                  |
+| -------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| state $s$                  | one concrete articulation instance under evaluation                          | any runtime object that can be transformed, tested, and canonically keyed       |
+| class $A_n$                | the current admitted mode of articulation                                    | the current rule-set that defines operators, membership, and equivalence        |
+| move                       | one application of one operator to one state                                 | one computation of the form $op(s)$                                             |
+| operator $op$              | a transformation rule available in the current class                         | a callable transform or rewrite rule                                            |
+| operator set $\Omega(A_n)$ | the operators currently admitted for class $A_n$                             | the list or family of transforms you are willing to try right now               |
+| allowed move               | a move using an operator from the current operator set                       | a move with $op \in \Omega(A_n)$                                                |
+| same-class move            | a move whose result still belongs to the current class                       | a move with $in_class(op(s), A_n) = true$                                       |
+| lawful move                | a move whose result remains valid under the current branch rules             | a move with $lawful(op(s), A_n) = true$                                         |
+| legal move                 | shorthand for a move that is both allowed and lawful                         | a move that is admitted for evaluation in the current class                     |
+| canonical state            | the normalized representative of a same-class equivalence family             | the state after canonicalization, before novelty is checked                     |
+| key $key(s, A_n)$          | the canonical identifier for a state inside the current class                | a hash, tuple, normal form, or label used to test novelty                       |
+| seen set $K_{seen}(A_n)$   | the canonical same-class states already admitted or encountered              | the store used to decide whether a result is new or redundant                   |
+| frontier $F(A_n)$          | the states you are actually testing moves from right now                     | the active working set, not all logically possible states                       |
+| new same-class state       | a same-class result not equivalent to anything already seen in the class     | a result whose canonical key is not in $K_{seen}(A_n)$                          |
+| same-class novelty         | existence of at least one allowed lawful same-class move whose key is unseen | at least one move still creates a new same-class state now                      |
+| saturation                 | absence of same-class novelty in the current test horizon                    | no allowed lawful same-class move creates a new same-class state now            |
+| capacity                   | the amount of same-class novelty still immediately reachable                 | the number of unseen lawful same-class keys reachable from the current frontier |
+
+
+---
+
 ## The four exact forms of the law
 
 ### 1. Constitutional form
