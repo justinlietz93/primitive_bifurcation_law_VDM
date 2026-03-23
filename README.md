@@ -1,111 +1,418 @@
-# Origin Operator Discriminator — corrected executable successor-mutation test
+# A(-1) Programmable Reference Sheet
 
-## What this test is trying to answer
-We wanted to distinguish two possibilities:
+This is a compact reference sheet for the primitive law.
 
-1. **Stronger same-orbit choke only**
-   - more pressure only increases latency / contention,
-   - but no new executable class is actually admitted.
+Goal: define every symbol and test condition in a way that can be implemented.
 
-2. **New irreducible executable class admission**
-   - the successor really changes its local instruction class,
-   - so the system is not just choking harder; it is crossing into a new executed witness.
+---
 
-## Why the earlier executable choke needed correction
-The earlier `LOCK CMPXCHG` executable choke targeted the **first byte of the next cell**, which started as `0F`.
-With `AL=0` at the compare point, that mostly produced **locked failed compares** on executable bytes.
-That created a real choke, but it did **not** reliably prove that the next cell's executed instruction class had changed.
+## Core rule
 
-So the corrected question became:
+Stay in the current class while at least one allowed same-class move still produces a new lawful same-class state. If none do, the class is saturated, void debt is active, and the system must admit the minimum orthogonal extension needed to make lawful articulation possible again.
 
-> Can the origin-search path cause the next cell's **executed opcode** to change class, not just be contended on?
+---
 
-## Corrected mechanism
-Each cell is:
+## The four exact forms of the law
 
-- `BSR EAX,EAX` repeated `density` times,
-- then `LOCK CMPXCHG` into the **next cell's mutable opcode byte**,
-- then a 2-byte local opcode pair:
-  - `00 C0` = `add al, al`
-  - `01 C0` = `add eax, eax`
+### 1. Constitutional form
 
-This means a successful compare-exchange changes the next cell from an **8-bit local execution** to a **32-bit local execution** while staying executable.
+$$
+\operatorname{Bear}(\operatorname{Inv}, A_n) \wedge \operatorname{Sat}(A_n) \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\Longrightarrow
+\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \operatorname{Bear}(\operatorname{Inv}, A_{n+1})\bigr)
+$$
 
-## Key source files
-- `test_mutable_successor_chain.c`
-- `test_mutable_single_pass.c`
+Meaning:
 
-## Key findings
+* the invariant is still being borne
+* the current class is saturated
+* discharge is forbidden
+* therefore a new orthogonal class must be admitted
 
-### 1. The executable class really does change
-A **single call** through the 3-cell ring is enough to flip all local opcode pairs from:
+Programmable reading:
 
-- `00 C0`
+$\operatorname{bears_inv}(A_n) \land \operatorname{is_saturated}(A_n) \land \neg \operatorname{discharged}(\operatorname{Inv}) \Rightarrow \operatorname{admit_orthogonal_class}()$
 
-to
+---
 
-- `01 C0`
+### 2. Capacity-collapse form
 
-for densities 1, 2, and 3.
+$$
+\operatorname{Bear}(\operatorname{Inv}, A_n) \wedge \bigl(\operatorname{Cap}(A_n)=0\bigr) \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\Longrightarrow
+\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \operatorname{Bear}(\operatorname{Inv}, A_{n+1})\bigr)
+$$
 
-So the successor-opcode class admission is real.
+Meaning:
 
-### 2. The admission happens even without shared contention
-The same full `00 -> 01` successor-opcode flip happened in:
+* saturation is exactly the case where same-class capacity is zero
 
-- shared two-core runs,
-- separate two-core controls,
-- and single-pass single-region tests.
+Programmable reading:
 
-That means the **new executable class admission is not being created by cross-core choke**.
-The admission is already present in the local successor law.
+$\operatorname{bears_inv}(A_n) \land \operatorname{capacity}(A_n)=0 \land \neg \operatorname{discharged}(\operatorname{Inv}) \Rightarrow \operatorname{admit_orthogonal_class}()$
 
-### 3. Shared contention still changes timing, but that is a separate effect
-Mean latencies from the corrected successor-mutation chain:
+---
 
-#### Density 1
-- shared core0: 1992.29836
-- shared core1: 1950.96260
-- separate core0: 2003.15172
-- separate core1: 1798.21500
+### 3. Void-debt form
 
-#### Density 2
-- shared core0: 1984.56356
-- shared core1: 2269.13788
-- separate core0: 1932.67100
-- separate core1: 2098.39296
+$$
+\operatorname{Debt}(\operatorname{Inv}, A_n)=+\infty \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\Longrightarrow
+\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \operatorname{Bear}(\operatorname{Inv}, A_{n+1})\bigr)
+$$
 
-#### Density 3
-- shared core0: 2038.92432
-- shared core1: 1952.88560
-- separate core0: 2267.81192
-- separate core1: 2365.30588
+Meaning:
 
-These ratios move around, but the more important result is that the **instruction-class admission already completed** before the cross-core regime mattered.
+* void debt is unresolved continuation pressure when same-class capacity is exhausted
+* $+\infty$ means there is no finite same-class resolution left
 
-## Interpretation
-The corrected experiment suggests:
+Programmable reading:
 
-- the earlier heavy choke measurements were useful as host-pressure witnesses,
-- but they were **not sufficient** to prove executable class admission,
-- and once the successor-opcode mutation is made real, the class admission occurs **immediately**, even without shared-core pressure.
+$\operatorname{debt_active}(A_n) \land \neg \operatorname{discharged}(\operatorname{Inv}) \Rightarrow \operatorname{admit_orthogonal_class}()$
 
-So the local successor law seems to be doing something stronger than "more of the same choke":
+---
 
-- it admits a new executed witness (`00 C0 -> 01 C0`) on the very first pass,
-- while cross-core contention mainly modulates timing around that already-admitted class.
+### 4. Executable operator form
 
-## Why this is helpful for the 0D→1D operator search
-This pushes the search in a cleaner direction:
+$$
+\operatorname{BifOp}*{\operatorname{Inv}}(A_n)=
+\begin{cases}
+A_n, & \operatorname{Cap}(A_n)>0, \
+A_n \oplus A*{n+1}^{\perp}, & \operatorname{Cap}(A_n)=0 \wedge \operatorname{Bear}(\operatorname{Inv},A_n) \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\end{cases}
+$$
 
-- stop treating cross-core ratios as the primary evidence of class admission,
-- use them only as host-pressure diagnostics,
-- and treat **local executable class change** as the first serious witness that the successor law is doing more than buffering or choking.
+Meaning:
 
-## What to test next
-The next strong discriminator is:
+* if capacity remains, stay in the current class
+* if capacity is zero and the invariant still must be borne, keep the old class and add a new orthogonal one
 
-> Build a successor pair that can **toggle or branch between two executable classes repeatedly**, not just perform a one-shot `00 -> 01` promotion.
+Programmable reading:
 
-Right now the corrected chain proves real successor-opcode admission, but it settles immediately.
-To decide whether the law can sustain a deeper orbit rather than a one-shot promotion, the next target should be a reversible or cyclic executable successor pair.
+$$
+\operatorname{BifOp}*{\operatorname{Inv}}(A_n)=
+\begin{cases}
+A_n, & \text{if immediate same-class novelty still exists} \
+A_n \oplus A*{n+1}^{\perp}, & \text{if no immediate same-class novelty exists and non-discharge still binds}
+\end{cases}
+$$
+
+---
+
+## The useful fifth form: activation / equivalence
+
+$$
+\operatorname{Bear}(\operatorname{Inv},A_n) \wedge \bigl(\operatorname{Cap}(A_n)=0\bigr) \wedge \neg\operatorname{Dis}(\operatorname{Inv})
+\Longleftrightarrow
+\operatorname{Debt}(\operatorname{Inv},A_n)=+\infty \wedge \neg\operatorname{Dis}(\operatorname{Inv})
+$$
+
+Meaning:
+
+* borne invariant plus zero capacity plus no discharge is exactly the same state as active void debt plus no discharge
+
+---
+
+## Minimal implementation interface
+
+A concrete runtime must define these items:
+
+* $\operatorname{bears_inv}(A_n) \to {\text{true},\text{false}}$
+* $\operatorname{discharged}(\operatorname{Inv}) \to {\text{true},\text{false}}$
+* $\operatorname{operators}(A_n) \to {$allowed same-class transforms$}$
+* $\operatorname{in_class}(s, A_n) \to {\text{true},\text{false}}$
+* $\operatorname{lawful}(s, A_n) \to {\text{true},\text{false}}$
+* $\operatorname{key}(s, A_n) \to \text{canonical same-class identifier}$
+* $\operatorname{admit_minimal_orthogonal_extension}(A_n)$
+
+The paper does not hand these to you. The runtime must define them.
+
+---
+
+## Concise programmable definitions
+
+### $\operatorname{Inv}$
+
+Primitive invariant.
+
+Definition: the unresolved source condition that must continue to be borne without discharge.
+
+Implementation role: the thing that can still be borne, can be discharged, and can still require continuation.
+
+---
+
+### $A_n$
+
+Current articulation class.
+
+Definition: the currently admitted representation / move-space / mode of lawful expression.
+
+Implementation role: the object that defines current operators, current same-class membership, and current equivalence rules.
+
+---
+
+### $\operatorname{Bear}(\operatorname{Inv}, A_n)$
+
+Invariant-bear predicate.
+
+Definition: true if the current class is still carrying the invariant in a live unresolved way.
+
+Implementation role: boolean state test.
+
+Minimal meaning: the branch is still an active host of the invariant.
+
+---
+
+### $\operatorname{Sat}(A_n)$
+
+Saturation predicate.
+
+Definition: true when no allowed same-class move yields a new lawful same-class state.
+
+Equivalent form:
+
+$$
+\operatorname{Sat}(A_n) \Longleftrightarrow \operatorname{Cap}(A_n)=0
+$$
+
+Immediate operational test:
+
+$$
+\operatorname{Sat}(A_n)=\text{true}
+\iff
+\forall s \in F(A_n),; \forall op \in \Omega(A_n),;
+\Bigl[
+\operatorname{in_class}(op(s),A_n) \wedge \operatorname{lawful}(op(s),A_n)
+\Bigr]
+\Rightarrow
+\operatorname{key}(op(s),A_n) \in K_{\text{seen}}(A_n)
+$$
+
+where:
+
+* $F(A_n)$ is the current frontier of states being tested
+* $\Omega(A_n)$ is the current allowed same-class operator set
+* $K_{\text{seen}}(A_n)$ is the set of already-seen canonical same-class keys
+
+Plain meaning: every allowed same-class move either fails, leaves the class, becomes unlawful, or lands on a canonical state already seen.
+
+---
+
+### $\operatorname{Cap}(A_n)$
+
+Same-class articulation capacity.
+
+Definition: the number of immediately reachable new lawful same-class states still available.
+
+Important rule: this is immediate capacity, not omniscient total future capacity.
+
+Operational definition:
+
+$$
+\operatorname{Cap}(A_n)
+=======================
+
+\left|
+\left{
+\operatorname{key}(op(s),A_n)
+;\middle|;
+\begin{array}{l}
+s \in F(A_n), \
+op \in \Omega(A_n), \
+\operatorname{in_class}(op(s),A_n), \
+\operatorname{lawful}(op(s),A_n), \
+\operatorname{key}(op(s),A_n) \notin K_{\text{seen}}(A_n)
+\end{array}
+\right}
+\right|
+$$
+
+Interpretation:
+
+* $\operatorname{Cap}(A_n) > 0$ means at least one new same-class move exists now
+* $\operatorname{Cap}(A_n) = 0$ means saturated now
+
+---
+
+### $\operatorname{Dis}(\operatorname{Inv})$
+
+Discharge predicate.
+
+Definition: true if the invariant has been terminally resolved, cancelled, collapsed, or otherwise no longer requires continued articulation.
+
+Implementation role: boolean terminal-state test.
+
+Minimal meaning: the unresolved source condition is gone as an active burden.
+
+---
+
+### $\operatorname{Debt}(\operatorname{Inv}, A_n)$
+
+Void debt.
+
+Definition: unresolved continuation pressure when the invariant is still borne but same-class capacity is zero.
+
+Primitive-law activation condition:
+
+$$
+\operatorname{Debt}(\operatorname{Inv}, A_n)=+\infty
+\iff
+\operatorname{Bear}(\operatorname{Inv},A_n) \wedge \operatorname{Cap}(A_n)=0 \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+$$
+
+Implementation role: state flag, not yet a geometric field.
+
+Plain meaning: the invariant still needs hosting, but the current class has no new same-class move left.
+
+---
+
+### $A_{n+1}^{\perp}$
+
+Orthogonal articulation class.
+
+Definition: the minimal newly admitted class that is irreducible to the exhausted current class and restores the possibility of lawful new articulation.
+
+Implementation role: a class extension that adds genuinely new expressive freedom.
+
+Plain meaning: not a decoration, not a rename, not more of the same. It must make at least one new lawful articulation possible that the old class could not host.
+
+---
+
+### $\perp$
+
+Orthogonality relation.
+
+Definition: irreducible difference in articulation class.
+
+Implementation role: a test that the new class is not equivalent to or collapsible into the current class.
+
+Plain meaning: a real new degree of expressive freedom, not an internal rearrangement.
+
+---
+
+### $\oplus$
+
+Inheritance-plus-admission.
+
+Definition: keep the current class and add the new orthogonal one.
+
+Implementation role: extension, not replacement.
+
+Plain meaning: the old class stays; the new class is layered on top as additional expressive structure.
+
+---
+
+### $\operatorname{BifOp}_{\operatorname{Inv}}$
+
+Primitive bifurcation operator.
+
+Definition: the control law that decides whether to remain in the current class or extend it.
+
+Operational form:
+
+$$
+\operatorname{BifOp}*{\operatorname{Inv}}(A_n)=
+\begin{cases}
+A_n, & \operatorname{Cap}(A_n)>0 \
+A_n \oplus A*{n+1}^{\perp}, & \operatorname{Cap}(A_n)=0 \wedge \operatorname{Bear}(\operatorname{Inv},A_n) \wedge \neg\operatorname{Dis}(\operatorname{Inv})
+\end{cases}
+$$
+
+Plain meaning: stay if the current class still has novelty; extend if it does not.
+
+---
+
+### $\operatorname{Bur}(\operatorname{Inv}, A_n)$
+
+Invariant burden.
+
+Definition: the unresolved load currently being carried by the class.
+
+Implementation role: hidden state behind the fact that the invariant is still active and not discharged.
+
+Plain meaning: why continuation still matters.
+
+---
+
+## Immediate-state tests
+
+### Immediate capacity test
+
+A class has immediate capacity if at least one allowed same-class move still yields a new lawful same-class state.
+
+$$
+\operatorname{HasCapNow}(A_n)
+\iff
+\exists s \in F(A_n),; \exists op \in \Omega(A_n)
+\text{ such that }
+\operatorname{in_class}(op(s),A_n)
+\wedge
+\operatorname{lawful}(op(s),A_n)
+\wedge
+\operatorname{key}(op(s),A_n) \notin K_{\text{seen}}(A_n)
+$$
+
+### Immediate saturation test
+
+$$
+\operatorname{Sat}(A_n) \iff \neg \operatorname{HasCapNow}(A_n)
+$$
+
+Plain meaning: you do not need omniscience over all future capacity. You only need to know whether any allowed same-class move right now still produces a new lawful same-class state.
+
+---
+
+## Minimal branch condition
+
+$$
+\operatorname{Bear}(\operatorname{Inv},A_n)
+\wedge
+\neg\operatorname{Dis}(\operatorname{Inv})
+\wedge
+\neg\operatorname{HasCapNow}(A_n)
+\Longrightarrow
+\operatorname{AdmitMinimalOrthogonalExtension}(A_n)
+$$
+
+Plain meaning: if the invariant still must be borne, discharge is forbidden, and the current class has no immediate novelty left, then the system must minimally extend itself.
+
+---
+
+## Boundary hosting
+
+Boundary hosting is the limiting same-class locus where continued bearing is still possible at the moment same-class capacity collapses.
+
+Programmable meaning:
+
+* when $\operatorname{Cap}(A_n)=0$, the system does not jump arbitrarily
+* continuation is forced from the current limit of lawful hosting
+* the orthogonal extension must attach there in the minimal way needed to restore lawful articulation
+
+This is the primitive seed of locality, causal ordering, and finite-stage transfer.
+
+---
+
+## Scope note
+
+This sheet is a working computational reference for the primitive law.
+
+It is not a prohibition list.
+It is not claiming that later structures are impossible.
+It is only naming the control logic that is explicit here so the runtime can be built without semantic drift.
+
+Use it as a stable reference for the trigger, state tests, and branch condition.
+Do not read it as a fence around future derivations or implementations.
+
+---
+
+## Shortest exact summary
+
+The primitive law is one control rule written in four exact forms plus one useful equivalence form.
+
+Its executable core is:
+
+$$
+\text{persist if immediate same-class novelty remains; otherwise, under borne invariant and non-discharge, admit the minimum orthogonal extension.}
+$$
+
+That is the programmable heart of A(-1).
