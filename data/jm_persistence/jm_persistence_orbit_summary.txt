@@ -1,0 +1,12 @@
+single-thread phase trace follows test_jm_persistence_orbit.log
+shared mean core0 3558.301400
+shared mean core1 3566.134100
+separate mean core0 1900.437700
+separate mean core1 1648.560000
+shared/separate core0 1.872358878168
+shared/separate core1 2.163181261222
+shared core0/core1 0.997803587925
+separate core0/core1 1.152786492454
+shared_final mut=01 01 00 shadow=00 00 00
+separate0_final mut=00 00 00 shadow=00 00 00
+separate1_final mut=00 00 00 shadow=00 00 00
