@@ -17,9 +17,9 @@ Stay in the current class while at least one allowed same-class move still produ
 ### 1. Constitutional form
 
 $$
-\operatorname{Bear}(\operatorname{Inv}, A_n) \wedge \operatorname{Sat}(A_n) \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\mathop{Bear}(\mathop{Inv}, A_n) \wedge \mathop{Sat}(A_n) \wedge \neg \mathop{Dis}(\mathop{Inv})
 \Longrightarrow
-\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \operatorname{Bear}(\operatorname{Inv}, A_{n+1})\bigr)
+\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \mathop{Bear}(\mathop{Inv}, A_{n+1})\bigr)
 $$
 
 Meaning:
@@ -31,16 +31,16 @@ Meaning:
 
 Programmable reading:
 
-$\operatorname{bears_inv}(A_n) \land \operatorname{is_saturated}(A_n) \land \neg \operatorname{discharged}(\operatorname{Inv}) \Rightarrow \operatorname{admit_orthogonal_class}()$
+$\mathop{bears_inv}(A_n) \land \mathop{is_saturated}(A_n) \land \neg \mathop{discharged}(\mathop{Inv}) \Rightarrow \mathop{admit_orthogonal_class}()$
 
 ---
 
 ### 2. Capacity-collapse form
 
 $$
-\operatorname{Bear}(\operatorname{Inv}, A_n) \wedge \bigl(\operatorname{Cap}(A_n)=0\bigr) \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\mathop{Bear}(\mathop{Inv}, A_n) \wedge \bigl(\mathop{Cap}(A_n)=0\bigr) \wedge \neg \mathop{Dis}(\mathop{Inv})
 \Longrightarrow
-\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \operatorname{Bear}(\operatorname{Inv}, A_{n+1})\bigr)
+\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \mathop{Bear}(\mathop{Inv}, A_{n+1})\bigr)
 $$
 
 Meaning:
@@ -49,16 +49,16 @@ Meaning:
 
 Programmable reading:
 
-$\operatorname{bears_inv}(A_n) \land \operatorname{capacity}(A_n)=0 \land \neg \operatorname{discharged}(\operatorname{Inv}) \Rightarrow \operatorname{admit_orthogonal_class}()$
+$\mathop{bears_inv}(A_n) \land \mathop{capacity}(A_n)=0 \land \neg \mathop{discharged}(\mathop{Inv}) \Rightarrow \mathop{admit_orthogonal_class}()$
 
 ---
 
 ### 3. Void-debt form
 
 $$
-\operatorname{Debt}(\operatorname{Inv}, A_n)=+\infty \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\mathop{Debt}(\mathop{Inv}, A_n)=+\infty \wedge \neg \mathop{Dis}(\mathop{Inv})
 \Longrightarrow
-\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \operatorname{Bear}(\operatorname{Inv}, A_{n+1})\bigr)
+\exists A_{n+1}\bigl(A_{n+1} \perp A_n \wedge \mathop{Bear}(\mathop{Inv}, A_{n+1})\bigr)
 $$
 
 Meaning:
@@ -68,17 +68,17 @@ Meaning:
 
 Programmable reading:
 
-$\operatorname{debt_active}(A_n) \land \neg \operatorname{discharged}(\operatorname{Inv}) \Rightarrow \operatorname{admit_orthogonal_class}()$
+$\mathop{debt_active}(A_n) \land \neg \mathop{discharged}(\mathop{Inv}) \Rightarrow \mathop{admit_orthogonal_class}()$
 
 ---
 
 ### 4. Executable operator form
 
 $$
-\operatorname{BifOp}*{\operatorname{Inv}}(A_n)=
+\mathop{BifOp}*{\mathop{Inv}}(A_n)=
 \begin{cases}
-A_n, & \operatorname{Cap}(A_n)>0, \
-A_n \oplus A*{n+1}^{\perp}, & \operatorname{Cap}(A_n)=0 \wedge \operatorname{Bear}(\operatorname{Inv},A_n) \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+A_n, & \mathop{Cap}(A_n)>0, \
+A_n \oplus A*{n+1}^{\perp}, & \mathop{Cap}(A_n)=0 \wedge \mathop{Bear}(\mathop{Inv},A_n) \wedge \neg \mathop{Dis}(\mathop{Inv})
 \end{cases}
 $$
 
@@ -90,7 +90,7 @@ Meaning:
 Programmable reading:
 
 $$
-\operatorname{BifOp}*{\operatorname{Inv}}(A_n)=
+\mathop{BifOp}*{\mathop{Inv}}(A_n)=
 \begin{cases}
 A_n, & \text{if immediate same-class novelty still exists} \
 A_n \oplus A*{n+1}^{\perp}, & \text{if no immediate same-class novelty exists and non-discharge still binds}
@@ -102,9 +102,9 @@ $$
 ## The useful fifth form: activation / equivalence
 
 $$
-\operatorname{Bear}(\operatorname{Inv},A_n) \wedge \bigl(\operatorname{Cap}(A_n)=0\bigr) \wedge \neg\operatorname{Dis}(\operatorname{Inv})
+\mathop{Bear}(\mathop{Inv},A_n) \wedge \bigl(\mathop{Cap}(A_n)=0\bigr) \wedge \neg\mathop{Dis}(\mathop{Inv})
 \Longleftrightarrow
-\operatorname{Debt}(\operatorname{Inv},A_n)=+\infty \wedge \neg\operatorname{Dis}(\operatorname{Inv})
+\mathop{Debt}(\mathop{Inv},A_n)=+\infty \wedge \neg\mathop{Dis}(\mathop{Inv})
 $$
 
 Meaning:
@@ -117,13 +117,13 @@ Meaning:
 
 A concrete runtime must define these items:
 
-* $\operatorname{bears_inv}(A_n) \to {\text{true},\text{false}}$
-* $\operatorname{discharged}(\operatorname{Inv}) \to {\text{true},\text{false}}$
-* $\operatorname{operators}(A_n) \to {$allowed same-class transforms$}$
-* $\operatorname{in_class}(s, A_n) \to {\text{true},\text{false}}$
-* $\operatorname{lawful}(s, A_n) \to {\text{true},\text{false}}$
-* $\operatorname{key}(s, A_n) \to \text{canonical same-class identifier}$
-* $\operatorname{admit_minimal_orthogonal_extension}(A_n)$
+* $\mathop{bears_inv}(A_n) \to {\text{true},\text{false}}$
+* $\mathop{discharged}(\mathop{Inv}) \to {\text{true},\text{false}}$
+* $\mathop{operators}(A_n) \to {$allowed same-class transforms$}$
+* $\mathop{in_class}(s, A_n) \to {\text{true},\text{false}}$
+* $\mathop{lawful}(s, A_n) \to {\text{true},\text{false}}$
+* $\mathop{key}(s, A_n) \to \text{canonical same-class identifier}$
+* $\mathop{admit_minimal_orthogonal_extension}(A_n)$
 
 The paper does not hand these to you. The runtime must define them.
 
@@ -131,7 +131,7 @@ The paper does not hand these to you. The runtime must define them.
 
 ## Concise programmable definitions
 
-### $\operatorname{Inv}$
+### $\mathop{Inv}$
 
 Primitive invariant.
 
@@ -151,7 +151,7 @@ Implementation role: the object that defines current operators, current same-cla
 
 ---
 
-### $\operatorname{Bear}(\operatorname{Inv}, A_n)$
+### $\mathop{Bear}(\mathop{Inv}, A_n)$
 
 Invariant-bear predicate.
 
@@ -163,7 +163,7 @@ Minimal meaning: the branch is still an active host of the invariant.
 
 ---
 
-### $\operatorname{Sat}(A_n)$
+### $\mathop{Sat}(A_n)$
 
 Saturation predicate.
 
@@ -172,20 +172,20 @@ Definition: true when no allowed same-class move yields a new lawful same-class 
 Equivalent form:
 
 $$
-\operatorname{Sat}(A_n) \Longleftrightarrow \operatorname{Cap}(A_n)=0
+\mathop{Sat}(A_n) \Longleftrightarrow \mathop{Cap}(A_n)=0
 $$
 
 Immediate operational test:
 
 $$
-\operatorname{Sat}(A_n)=\text{true}
+\mathop{Sat}(A_n)=\text{true}
 \iff
 \forall s \in F(A_n),; \forall op \in \Omega(A_n),;
 \Bigl[
-\operatorname{in_class}(op(s),A_n) \wedge \operatorname{lawful}(op(s),A_n)
+\mathop{in_class}(op(s),A_n) \wedge \mathop{lawful}(op(s),A_n)
 \Bigr]
 \Rightarrow
-\operatorname{key}(op(s),A_n) \in K_{\text{seen}}(A_n)
+\mathop{key}(op(s),A_n) \in K_{\text{seen}}(A_n)
 $$
 
 where:
@@ -198,7 +198,7 @@ Plain meaning: every allowed same-class move either fails, leaves the class, bec
 
 ---
 
-### $\operatorname{Cap}(A_n)$
+### $\mathop{Cap}(A_n)$
 
 Same-class articulation capacity.
 
@@ -209,19 +209,19 @@ Important rule: this is immediate capacity, not omniscient total future capacity
 Operational definition:
 
 $$
-\operatorname{Cap}(A_n)
+\mathop{Cap}(A_n)
 =======================
 
 \left|
 \left{
-\operatorname{key}(op(s),A_n)
+\mathop{key}(op(s),A_n)
 ;\middle|;
 \begin{array}{l}
 s \in F(A_n), \
 op \in \Omega(A_n), \
-\operatorname{in_class}(op(s),A_n), \
-\operatorname{lawful}(op(s),A_n), \
-\operatorname{key}(op(s),A_n) \notin K_{\text{seen}}(A_n)
+\mathop{in_class}(op(s),A_n), \
+\mathop{lawful}(op(s),A_n), \
+\mathop{key}(op(s),A_n) \notin K_{\text{seen}}(A_n)
 \end{array}
 \right}
 \right|
@@ -229,12 +229,12 @@ $$
 
 Interpretation:
 
-* $\operatorname{Cap}(A_n) > 0$ means at least one new same-class move exists now
-* $\operatorname{Cap}(A_n) = 0$ means saturated now
+* $\mathop{Cap}(A_n) > 0$ means at least one new same-class move exists now
+* $\mathop{Cap}(A_n) = 0$ means saturated now
 
 ---
 
-### $\operatorname{Dis}(\operatorname{Inv})$
+### $\mathop{Dis}(\mathop{Inv})$
 
 Discharge predicate.
 
@@ -246,7 +246,7 @@ Minimal meaning: the unresolved source condition is gone as an active burden.
 
 ---
 
-### $\operatorname{Debt}(\operatorname{Inv}, A_n)$
+### $\mathop{Debt}(\mathop{Inv}, A_n)$
 
 Void debt.
 
@@ -255,9 +255,9 @@ Definition: unresolved continuation pressure when the invariant is still borne b
 Primitive-law activation condition:
 
 $$
-\operatorname{Debt}(\operatorname{Inv}, A_n)=+\infty
+\mathop{Debt}(\mathop{Inv}, A_n)=+\infty
 \iff
-\operatorname{Bear}(\operatorname{Inv},A_n) \wedge \operatorname{Cap}(A_n)=0 \wedge \neg \operatorname{Dis}(\operatorname{Inv})
+\mathop{Bear}(\mathop{Inv},A_n) \wedge \mathop{Cap}(A_n)=0 \wedge \neg \mathop{Dis}(\mathop{Inv})
 $$
 
 Implementation role: state flag, not yet a geometric field.
@@ -302,7 +302,7 @@ Plain meaning: the old class stays; the new class is layered on top as additiona
 
 ---
 
-### $\operatorname{BifOp}_{\operatorname{Inv}}$
+### $\mathop{BifOp}_{\mathop{Inv}}$
 
 Primitive bifurcation operator.
 
@@ -311,10 +311,10 @@ Definition: the control law that decides whether to remain in the current class 
 Operational form:
 
 $$
-\operatorname{BifOp}*{\operatorname{Inv}}(A_n)=
+\mathop{BifOp}*{\mathop{Inv}}(A_n)=
 \begin{cases}
-A_n, & \operatorname{Cap}(A_n)>0 \
-A_n \oplus A*{n+1}^{\perp}, & \operatorname{Cap}(A_n)=0 \wedge \operatorname{Bear}(\operatorname{Inv},A_n) \wedge \neg\operatorname{Dis}(\operatorname{Inv})
+A_n, & \mathop{Cap}(A_n)>0 \
+A_n \oplus A*{n+1}^{\perp}, & \mathop{Cap}(A_n)=0 \wedge \mathop{Bear}(\mathop{Inv},A_n) \wedge \neg\mathop{Dis}(\mathop{Inv})
 \end{cases}
 $$
 
@@ -322,7 +322,7 @@ Plain meaning: stay if the current class still has novelty; extend if it does no
 
 ---
 
-### $\operatorname{Bur}(\operatorname{Inv}, A_n)$
+### $\mathop{Bur}(\mathop{Inv}, A_n)$
 
 Invariant burden.
 
@@ -341,21 +341,21 @@ Plain meaning: why continuation still matters.
 A class has immediate capacity if at least one allowed same-class move still yields a new lawful same-class state.
 
 $$
-\operatorname{HasCapNow}(A_n)
+\mathop{HasCapNow}(A_n)
 \iff
 \exists s \in F(A_n),; \exists op \in \Omega(A_n)
 \text{ such that }
-\operatorname{in_class}(op(s),A_n)
+\mathop{in_class}(op(s),A_n)
 \wedge
-\operatorname{lawful}(op(s),A_n)
+\mathop{lawful}(op(s),A_n)
 \wedge
-\operatorname{key}(op(s),A_n) \notin K_{\text{seen}}(A_n)
+\mathop{key}(op(s),A_n) \notin K_{\text{seen}}(A_n)
 $$
 
 ### Immediate saturation test
 
 $$
-\operatorname{Sat}(A_n) \iff \neg \operatorname{HasCapNow}(A_n)
+\mathop{Sat}(A_n) \iff \neg \mathop{HasCapNow}(A_n)
 $$
 
 Plain meaning: you do not need omniscience over all future capacity. You only need to know whether any allowed same-class move right now still produces a new lawful same-class state.
@@ -365,13 +365,13 @@ Plain meaning: you do not need omniscience over all future capacity. You only ne
 ## Minimal branch condition
 
 $$
-\operatorname{Bear}(\operatorname{Inv},A_n)
+\mathop{Bear}(\mathop{Inv},A_n)
 \wedge
-\neg\operatorname{Dis}(\operatorname{Inv})
+\neg\mathop{Dis}(\mathop{Inv})
 \wedge
-\neg\operatorname{HasCapNow}(A_n)
+\neg\mathop{HasCapNow}(A_n)
 \Longrightarrow
-\operatorname{AdmitMinimalOrthogonalExtension}(A_n)
+\mathop{AdmitMinimalOrthogonalExtension}(A_n)
 $$
 
 Plain meaning: if the invariant still must be borne, discharge is forbidden, and the current class has no immediate novelty left, then the system must minimally extend itself.
@@ -384,7 +384,7 @@ Boundary hosting is the limiting same-class locus where continued bearing is sti
 
 Programmable meaning:
 
-* when $\operatorname{Cap}(A_n)=0$, the system does not jump arbitrarily
+* when $\mathop{Cap}(A_n)=0$, the system does not jump arbitrarily
 * continuation is forced from the current limit of lawful hosting
 * the orthogonal extension must attach there in the minimal way needed to restore lawful articulation
 
