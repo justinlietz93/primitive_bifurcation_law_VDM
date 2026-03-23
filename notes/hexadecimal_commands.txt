@@ -1,0 +1,13 @@
+0F BD C0  ; BSR EAX, EAX
+
+---
+
+0F BD C0  ; Core A: 0D Tension (The Hill)
+F7 D0     ; Core A: Bit-flip (The Roll)
+0F BD C0  ; Core B: 0D Tension (The Hill)
+F7 D0     ; Core B: Bit-flip (The Roll)
+
+---
+
+0F BD C0    ; [Search] BSR EAX, EAX (Find 1 in 0? No. ZF=1)
+0F 94 05 00 ; [Write]  SETZ [RIP+0] (If ZF=1, write '1' to the next byte)
