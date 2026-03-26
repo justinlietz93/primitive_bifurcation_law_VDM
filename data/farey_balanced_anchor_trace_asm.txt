@@ -1,0 +1,24 @@
+(1,1) trace to floor uv >= 4096
+step 0: (1,1) uv=1
+step 1: (1,2) uv=2
+step 2: (2,3) uv=6
+step 3: (3,5) uv=15
+step 4: (5,8) uv=40
+step 5: (8,13) uv=104
+step 6: (13,21) uv=273
+step 7: (21,34) uv=714
+step 8: (34,55) uv=1870
+step 9: (55,89) uv=4895  <-- floor hit
+
+(1,2) trace to floor uv >= 4096
+step 0: (1,2) uv=2
+step 1: (2,3) uv=6
+step 2: (3,5) uv=15
+step 3: (5,8) uv=40
+step 4: (8,13) uv=104
+step 5: (13,21) uv=273
+step 6: (21,34) uv=714
+step 7: (34,55) uv=1870
+step 8: (55,89) uv=4895  <-- floor hit
+
+Anchor from both smallest lifts: (55,89), uv=4895

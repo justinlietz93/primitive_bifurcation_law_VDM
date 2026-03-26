@@ -1,0 +1,25 @@
+width            label       seed tick          w w_next popcount_w popcount_next pre_is_single_support survivor_is_one                pre_support_pattern post_support_pattern
+   16         all_ones      65535    0      65535      1         16             1                 False            True                 0b1111111111111111                  0b1
+   16    top_half_ones      65280    0      65280      1          8             1                 False            True                 0b1111111100000000                  0b1
+   16 bottom_half_ones        255    8      32768      1          1             1                  True            True                 0b1000000000000000                  0b1
+   16     checker_1010      21845    8      32768      1          1             1                  True            True                 0b1000000000000000                  0b1
+   16     checker_0101      43690    7      49152      1          2             1                 False            True                 0b1100000000000000                  0b1
+   16   block_11110000       3855    8      32768      1          1             1                  True            True                 0b1000000000000000                  0b1
+   16   block_00001111      61680    4      63488      1          5             1                 False            True                 0b1111100000000000                  0b1
+   16        edge_bits      32769   14      49152      1          2             1                 False            True                 0b1100000000000000                  0b1
+   16 near_top_cluster      61440    0      61440      1          4             1                 False            True                 0b1111000000000000                  0b1
+   16 dense_except_top      32767    1      32768      1          1             1                  True            True                 0b1000000000000000                  0b1
+   16   sparse_triplet      33025   13      49152      1          2             1                 False            True                 0b1100000000000000                  0b1
+   16         powersum      57351   10      61440      1          4             1                 False            True                 0b1111000000000000                  0b1
+   32         all_ones 4294967295    0 4294967295      1         32             1                 False            True 0b11111111111111111111111111111111                  0b1
+   32    top_half_ones 4294901760    0 4294901760      1         16             1                 False            True 0b11111111111111110000000000000000                  0b1
+   32 bottom_half_ones      65535   16 2147483648      1          1             1                  True            True 0b10000000000000000000000000000000                  0b1
+   32     checker_1010 1431655765   16 2147483648      1          1             1                  True            True 0b10000000000000000000000000000000                  0b1
+   32     checker_0101 2863311530   15 3221225472      1          2             1                 False            True 0b11000000000000000000000000000000                  0b1
+   32   block_11110000  252645135   16 2147483648      1          1             1                  True            True 0b10000000000000000000000000000000                  0b1
+   32   block_00001111 4042322160   12 4160749568      1          5             1                 False            True 0b11111000000000000000000000000000                  0b1
+   32        edge_bits 2147483649   30 3221225472      1          2             1                 False            True 0b11000000000000000000000000000000                  0b1
+   32 near_top_cluster 4026531840    0 4026531840      1          4             1                 False            True 0b11110000000000000000000000000000                  0b1
+   32 dense_except_top 2147483647    1 2147483648      1          1             1                  True            True 0b10000000000000000000000000000000                  0b1
+   32   sparse_triplet 2147549185   29 3221225472      1          2             1                 False            True 0b11000000000000000000000000000000                  0b1
+   32         powersum 3758096391   26 4026531840      1          4             1                 False            True 0b11110000000000000000000000000000                  0b1

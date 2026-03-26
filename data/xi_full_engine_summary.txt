@@ -1,0 +1,49 @@
+First 24 rows:
+step=1 live=2 carry=0 A=0 theta=1 kappa=0 u=1 v=2 uv=2 ready=0 r=1/2 c=[(0)/(4) pi, (4)/(4) pi]
+step=2 live=4 carry=0 A=0 theta=2 kappa=0 u=2 v=3 uv=6 ready=0 r=1/6 c=[(10)/(12) pi, (14)/(12) pi]
+step=3 live=8 carry=0 A=0 theta=3 kappa=0 u=3 v=5 uv=15 ready=0 r=1/15 c=[(43)/(30) pi, (47)/(30) pi]
+step=4 live=16 carry=0 A=0 theta=4 kappa=1 u=5 v=8 uv=40 ready=0 r=1/40 c=[(158)/(80) pi, (162)/(80) pi]
+step=5 live=32 carry=0 A=0 theta=5 kappa=1 u=8 v=13 uv=104 ready=0 r=1/104 c=[(518)/(208) pi, (522)/(208) pi]
+step=6 live=64 carry=0 A=0 theta=6 kappa=1 u=13 v=21 uv=273 ready=0 r=1/273 c=[(1636)/(546) pi, (1640)/(546) pi]
+step=7 live=128 carry=0 A=0 theta=7 kappa=1 u=21 v=34 uv=714 ready=0 r=1/714 c=[(4996)/(1428) pi, (5000)/(1428) pi]
+step=8 live=256 carry=0 A=0 theta=8 kappa=2 u=34 v=55 uv=1870 ready=0 r=1/1870 c=[(14958)/(3740) pi, (14962)/(3740) pi]
+step=9 live=512 carry=0 A=0 theta=9 kappa=2 u=55 v=89 uv=4895 ready=0 r=1/4895 c=[(44053)/(9790) pi, (44057)/(9790) pi]
+step=10 live=1024 carry=0 A=0 theta=10 kappa=2 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(48948)/(9790) pi, (48952)/(9790) pi]
+step=11 live=2048 carry=0 A=0 theta=11 kappa=2 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(53843)/(9790) pi, (53847)/(9790) pi]
+step=12 live=4096 carry=0 A=0 theta=12 kappa=3 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(58738)/(9790) pi, (58742)/(9790) pi]
+step=13 live=8192 carry=0 A=0 theta=13 kappa=3 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(63633)/(9790) pi, (63637)/(9790) pi]
+step=14 live=16384 carry=0 A=0 theta=14 kappa=3 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(68528)/(9790) pi, (68532)/(9790) pi]
+step=15 live=32768 carry=0 A=0 theta=15 kappa=3 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(73423)/(9790) pi, (73427)/(9790) pi]
+step=16 live=65536 carry=0 A=0 theta=16 kappa=4 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(78318)/(9790) pi, (78322)/(9790) pi]
+step=17 live=131072 carry=0 A=0 theta=17 kappa=4 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(83213)/(9790) pi, (83217)/(9790) pi]
+step=18 live=262144 carry=0 A=0 theta=18 kappa=4 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(88108)/(9790) pi, (88112)/(9790) pi]
+step=19 live=524288 carry=0 A=0 theta=19 kappa=4 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(93003)/(9790) pi, (93007)/(9790) pi]
+step=20 live=1048576 carry=0 A=0 theta=20 kappa=5 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(97898)/(9790) pi, (97902)/(9790) pi]
+step=21 live=2097152 carry=0 A=0 theta=21 kappa=5 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(102793)/(9790) pi, (102797)/(9790) pi]
+step=22 live=4194304 carry=0 A=0 theta=22 kappa=5 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(107688)/(9790) pi, (107692)/(9790) pi]
+step=23 live=8388608 carry=0 A=0 theta=23 kappa=5 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(112583)/(9790) pi, (112587)/(9790) pi]
+step=24 live=16777216 carry=0 A=0 theta=24 kappa=6 u=55 v=89 uv=4895 ready=1 r=1/4895 c=[(117478)/(9790) pi, (117482)/(9790) pi]
+
+Carry articulation steps:
+
+Window-ready steps (first 20):
+step=10 u=55 v=89 uv=4895 r=1/4895
+step=11 u=55 v=89 uv=4895 r=1/4895
+step=12 u=55 v=89 uv=4895 r=1/4895
+step=13 u=55 v=89 uv=4895 r=1/4895
+step=14 u=55 v=89 uv=4895 r=1/4895
+step=15 u=55 v=89 uv=4895 r=1/4895
+step=16 u=55 v=89 uv=4895 r=1/4895
+step=17 u=55 v=89 uv=4895 r=1/4895
+step=18 u=55 v=89 uv=4895 r=1/4895
+step=19 u=55 v=89 uv=4895 r=1/4895
+step=20 u=55 v=89 uv=4895 r=1/4895
+step=21 u=55 v=89 uv=4895 r=1/4895
+step=22 u=55 v=89 uv=4895 r=1/4895
+step=23 u=55 v=89 uv=4895 r=1/4895
+step=24 u=55 v=89 uv=4895 r=1/4895
+step=25 u=55 v=89 uv=4895 r=1/4895
+step=26 u=55 v=89 uv=4895 r=1/4895
+step=27 u=55 v=89 uv=4895 r=1/4895
+step=28 u=55 v=89 uv=4895 r=1/4895
+step=29 u=55 v=89 uv=4895 r=1/4895

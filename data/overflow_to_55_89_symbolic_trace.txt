@@ -1,0 +1,40 @@
+Overflow survivor -> balanced Farey anchor
+
+Primitive survivor:
+  1
+
+Smallest lifts that were checked:
+  (1,1) and (1,2)
+
+Exact balanced route from (1,1):
+  step 0: (1,1)   r = 1/1
+  step 1: (1,2)   r = 1/2
+  step 2: (2,3)   r = 1/6
+  step 3: (3,5)   r = 1/15
+  step 4: (5,8)   r = 1/40
+  step 5: (8,13)   r = 1/104
+  step 6: (13,21)   r = 1/273
+  step 7: (21,34)   r = 1/714
+  step 8: (34,55)   r = 1/1870
+  step 9: (55,89)   r = 1/4895
+
+Exact balanced route from (1,2):
+  step 0: (1,2)   r = 1/2
+  step 1: (2,3)   r = 1/6
+  step 2: (3,5)   r = 1/15
+  step 3: (5,8)   r = 1/40
+  step 4: (8,13)   r = 1/104
+  step 5: (13,21)   r = 1/273
+  step 6: (21,34)   r = 1/714
+  step 7: (34,55)   r = 1/1870
+  step 8: (55,89)   r = 1/4895
+
+First floor hit above uv >= 4096:
+  (55,89)
+  uv = 4895
+  r = 1/4895
+
+Completion germ at the anchor:
+  c_n = [theta_n - pi/4895, theta_n + pi/4895]
+  width(c_n) = 2*pi/4895
+  width(c_n)/pi = 2/4895

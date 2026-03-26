@@ -1,0 +1,12 @@
+seed,first_event_tick,unique_survivors,all_survivor_is_one,pre_event_popcounts
+3,14,1,True,1
+5,14,1,True,1
+6,13,1,True,1
+7,13,1,True,1
+9,14,1,True,1
+10,13,1,True,1
+12,12,1,True,1
+13,13,1,True,1
+21,13,1,True,1
+42,12,1,True,1
+85,12,1,True,1
